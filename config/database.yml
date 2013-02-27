@@ -1,0 +1,25 @@
+development:
+  adapter: mysql
+  host: localhost
+  database: gtrep_development
+  pool: 5
+  username: admin
+  password: pass
+
+production: 
+  adapter: mysql
+  host: localhost
+  database: gtrep_production
+  pool: 5
+  username: admin
+  password: pass
+
+test:
+  adapter: mysql
+  host: localhost
+  encoding: utf8
+  reconnect: false
+  database: gtrep_test
+  pool: 5
+  username: admin
+  password: pass
