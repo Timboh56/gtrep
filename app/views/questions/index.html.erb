@@ -3,7 +3,6 @@
 <table>
   <tr>
     <th>Text</th>
-    <th>Answer</th>
     <th>Categories</th>
     <th>Type</th>
     <th></th>
@@ -14,7 +13,6 @@
 <% @questions.each do |question| %>
   <tr>
     <td><%= question.text %></td>
-    <td><%= question.answer %></td>
     <td><%= question.categories %></td>
     <td><%= question.type %></td>
     <td><%= link_to 'Show', question %></td>

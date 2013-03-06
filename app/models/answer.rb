@@ -1,3 +1,4 @@
 class Answer < ActiveRecord::Base
-  attr_accessible :text, :type
+  belongs_to :questions
+  attr_accessible :right, :text, :type
 end

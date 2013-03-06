@@ -10,6 +10,16 @@
   <%= @answer.type %>
 </p>
 
+<p>
+  <b>Right:</b>
+  <%= @answer.right %>
+</p>
+
+<p>
+  <b>Questions:</b>
+  <%= @answer.questions %>
+</p>
+
 
 <%= link_to 'Edit', edit_answer_path(@answer) %> |
 <%= link_to 'Back', answers_path %>

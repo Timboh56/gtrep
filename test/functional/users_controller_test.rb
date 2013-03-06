@@ -18,30 +18,30 @@ class UsersControllerTest < ActionController::TestCase
 
   test "should create user" do
     assert_difference('User.count') do
-      post :create, :user => { :edit => @user.edit, :email => @user.email, :new => @user.new, :password => @user.password, :username => @user.username }
+      post :create, user: { crypted_password: @user.crypted_password, email: @user.email, password_salt: @user.password_salt, persistence_token: @user.persistence_token, username: @user.username }
     end
 
     assert_redirected_to user_path(assigns(:user))
   end
 
   test "should show user" do
-    get :show, :id => @user
+    get :show, id: @user
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, :id => @user
+    get :edit, id: @user
     assert_response :success
   end
 
   test "should update user" do
-    put :update, :id => @user, :user => { :edit => @user.edit, :email => @user.email, :new => @user.new, :password => @user.password, :username => @user.username }
+    put :update, id: @user, user: { crypted_password: @user.crypted_password, email: @user.email, password_salt: @user.password_salt, persistence_token: @user.persistence_token, username: @user.username }
     assert_redirected_to user_path(assigns(:user))
   end
 
   test "should destroy user" do
     assert_difference('User.count', -1) do
-      delete :destroy, :id => @user
+      delete :destroy, id: @user
     end
 
     assert_redirected_to users_path

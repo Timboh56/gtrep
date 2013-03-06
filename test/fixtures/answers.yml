@@ -3,7 +3,11 @@
 one:
   text: MyString
   type: 
+  right: 
+  questions: 
 
 two:
   text: MyString
   type: 
+  right: 
+  questions: 

@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Categories.all
+    @categories = Category.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +13,7 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
-    @category = Categories.find(params[:id])
+    @category = Category.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +24,7 @@ class CategoriesController < ApplicationController
   # GET /categories/new
   # GET /categories/new.json
   def new
-    @category = Categories.new
+    @category = Category.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,17 +34,17 @@ class CategoriesController < ApplicationController
 
   # GET /categories/1/edit
   def edit
-    @category = Categories.find(params[:id])
+    @category = Category.find(params[:id])
   end
 
   # POST /categories
   # POST /categories.json
   def create
-    @category = Categories.new(params[:category])
+    @category = Category.new(params[:category])
 
     respond_to do |format|
       if @category.save
-        format.html { redirect_to @category, notice: 'Categories was successfully created.' }
+        format.html { redirect_to @category, notice: 'Category was successfully created.' }
         format.json { render json: @category, status: :created, location: @category }
       else
         format.html { render action: "new" }
@@ -56,11 +56,11 @@ class CategoriesController < ApplicationController
   # PUT /categories/1
   # PUT /categories/1.json
   def update
-    @category = Categories.find(params[:id])
+    @category = Category.find(params[:id])
 
     respond_to do |format|
       if @category.update_attributes(params[:category])
-        format.html { redirect_to @category, notice: 'Categories was successfully updated.' }
+        format.html { redirect_to @category, notice: 'Category was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -72,11 +72,11 @@ class CategoriesController < ApplicationController
   # DELETE /categories/1
   # DELETE /categories/1.json
   def destroy
-    @category = Categories.find(params[:id])
+    @category = Category.find(params[:id])
     @category.destroy
 
     respond_to do |format|
-      format.html { redirect_to categories_index_url }
+      format.html { redirect_to categories_url }
       format.json { head :no_content }
     end
   end

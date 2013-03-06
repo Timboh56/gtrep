@@ -16,16 +16,16 @@
     <%= f.text_field :text %>
   </div>
   <div class="field">
-    <%= f.label :answer %><br />
-    <%= f.text_field :answer %>
-  </div>
-  <div class="field">
     <%= f.label :categories %><br />
-    <%= f.text_field :categories %>
+	<%= select("question", "category", @categories.collect { |d| d.name }, {:include_blank => true}) %>
   </div>
   <div class="field">
-    <%= f.label :type %><br />
+    <%= f.label "Type of question?" %><br />
     <%= f.text_field :type %>
+  </div>
+  <div class="field">
+	  <%= f.label "Select an answer: " %>
+  	  <%= @answers %>
   </div>
   <div class="actions">
     <%= f.submit %>
