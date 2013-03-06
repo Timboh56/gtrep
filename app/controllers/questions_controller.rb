@@ -1,6 +1,8 @@
 class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
+  filter_resource_access
+  
   def index
     @questions = Question.all
 

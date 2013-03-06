@@ -11,14 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130306074410) do
+ActiveRecord::Schema.define(:version => 20130306083044) do
 
   create_table "answers", :force => true do |t|
     t.string   "text"
     t.string   "type"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.boolean  "correct?"
+    t.integer  "questions_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
+
+  add_index "answers", ["questions_id"], :name => "index_answers_on_questions_id"
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -28,15 +32,16 @@ ActiveRecord::Schema.define(:version => 20130306074410) do
 
   create_table "questions", :force => true do |t|
     t.string   "text"
-    t.integer  "answer_id"
-    t.integer  "categories_id"
+    t.integer  "category_id"
     t.string   "type"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
-  add_index "questions", ["answer_id"], :name => "index_questions_on_answer_id"
-  add_index "questions", ["categories_id"], :name => "index_questions_on_categories_id"
+  create_table "user_sessions", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "username"
@@ -46,6 +51,7 @@ ActiveRecord::Schema.define(:version => 20130306074410) do
     t.string   "persistence_token"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.string   "role"
   end
 
 end
