@@ -1,3 +1,5 @@
 class Question < ActiveRecord::Base
-  attr_accessible :text
+  belongs_to :answer
+  belongs_to :categories
+  attr_accessible :text, :type
 end

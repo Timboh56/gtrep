@@ -8,6 +8,7 @@ gem 'rails', '3.2.8'
 gem 'mysql', '2.8.1'
 
 gem 'authlogic'
+gem 'declarative_authorization'
 gem 'json'
 
 # Gems used only for assets and not required

@@ -3,8 +3,7 @@
 <table>
   <tr>
     <th>Text</th>
-    <th>Question</th>
-    <th>User</th>
+    <th>Type</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,11 +12,10 @@
 <% @answers.each do |answer| %>
   <tr>
     <td><%= answer.text %></td>
-    <td><%= answer.question_id %></td>
-    <td><%= answer.user_id %></td>
+    <td><%= answer.type %></td>
     <td><%= link_to 'Show', answer %></td>
     <td><%= link_to 'Edit', edit_answer_path(answer) %></td>
-    <td><%= link_to 'Destroy', answer, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+    <td><%= link_to 'Destroy', answer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

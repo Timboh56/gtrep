@@ -18,30 +18,30 @@ class AnswersControllerTest < ActionController::TestCase
 
   test "should create answer" do
     assert_difference('Answer.count') do
-      post :create, :answer => { :question_id => @answer.question_id, :text => @answer.text, :user_id => @answer.user_id }
+      post :create, answer: { text: @answer.text, type: @answer.type }
     end
 
     assert_redirected_to answer_path(assigns(:answer))
   end
 
   test "should show answer" do
-    get :show, :id => @answer
+    get :show, id: @answer
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, :id => @answer
+    get :edit, id: @answer
     assert_response :success
   end
 
   test "should update answer" do
-    put :update, :id => @answer, :answer => { :question_id => @answer.question_id, :text => @answer.text, :user_id => @answer.user_id }
+    put :update, id: @answer, answer: { text: @answer.text, type: @answer.type }
     assert_redirected_to answer_path(assigns(:answer))
   end
 
   test "should destroy answer" do
     assert_difference('Answer.count', -1) do
-      delete :destroy, :id => @answer
+      delete :destroy, id: @answer
     end
 
     assert_redirected_to answers_path
