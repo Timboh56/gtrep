@@ -27,6 +27,7 @@ class AnswersController < ApplicationController
   # GET /answers/new.json
   def new
     @answer = Answer.new
+    @questions = Question.all
 
     respond_to do |format|
       format.html # new.html.erb

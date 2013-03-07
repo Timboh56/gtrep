@@ -1,6 +1,6 @@
 authorization do  
   role :Admin do  
-    has_permission_on [:categories, :questions,:users, :answers, :roles, :assignments], :to => [:index, :show, :new, :create, :edit, :update, :destroy]  
+    has_permission_on [:categories, :questions, :users, :answers, :roles, :assignments], :to => [:index, :show, :new, :create, :edit, :update, :destroy]  
   end  
     
   role :guest do  

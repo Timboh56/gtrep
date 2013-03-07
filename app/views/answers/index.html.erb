@@ -14,8 +14,8 @@
 <% @answers.each do |answer| %>
   <tr>
     <td><%= answer.text %></td>
-    <td><%= answer.type %></td>
-    <td><%= answer.right %></td>
+    <td><%= answer.answer_type %></td>
+    <td><%= answer.correct %></td>
     <td><%= answer.questions %></td>
     <td><%= link_to 'Show', answer %></td>
     <td><%= link_to 'Edit', edit_answer_path(answer) %></td>

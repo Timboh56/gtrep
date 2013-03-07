@@ -16,16 +16,16 @@
     <%= f.text_field :text %>
   </div>
   <div class="field">
-    <%= f.label :type %><br />
-    <%= f.text_field :type %>
+    <%= f.label :answer_type %><br />
+    <%= f.text_field :answer_type %>
   </div>
   <div class="field">
-    <%= f.label :right %><br />
-    <%= f.text_field :right %>
+    <%= f.label :correct %><br />
+    <%= f.text_field :correct %>
   </div>
   <div class="field">
     <%= f.label :questions %><br />
-    <%= f.text_field :questions %>
+    <%= select("answer","questions_id",@questions.collect { |d| d.text } ) %>
   </div>
   <div class="actions">
     <%= f.submit %>

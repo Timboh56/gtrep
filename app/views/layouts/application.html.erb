@@ -24,7 +24,8 @@
 		<center>
         <% if current_user %>
 	 		<%=link_to "My Categories", categories_path %> | 
-			<%= link_to "My Responses", responses_path %> |			
+			<%= link_to "My Responses", responses_path %> |
+			<%= link_to "Answer Bank", answers_path %> |	
 			<%= link_to "Question Bank", questions_path %> |
         	<%= link_to "Edit Profile", edit_user_path(current_user.id)%> |
        	 	<%= link_to "Logout", :logout%>
