@@ -7,8 +7,14 @@ body {
 }
 
 h1 {
+  position:absolute;
+  top: 20%;
+  left: 3%;
   font-family: "aw-conqueror-carved-two", "verdana";
-  font-size: 2em;
+  font-size: 4em;
+  width:300px;
+  display: block;
+  line-height: .7em;
 }
 
 p, ol, ul, td, tr {
@@ -100,7 +106,9 @@ div {
 }
 
 .content {
+	opacity: .1;
 	margin: 20%;
 	margin-top: 10%;
-	width: 60%
+	width: 60%;
+	left: 0px;
 }
