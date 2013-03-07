@@ -12,7 +12,6 @@ Gtrep::Application.routes.draw do
   match 'logout' => 'user_sessions#destroy', :as => :logout
   
   root :to => 'user_session#new'
-  match 'permission_denied' => 'layouts/permission_denied.html.erb'
   
   
 

@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :responses
   has_many :assignments
   has_many :roles, :through => :assignments
+  using_access_control
   
   def role_symbols
     roles.map do |role|

@@ -4,22 +4,36 @@
   <title>Gtrep</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <script type="text/javascript" src="//use.typekit.net/vfg0zyr.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
   <%= csrf_meta_tags %>
 </head>
 <body>
- 
-    <div id="nav">
+    <div class="centering">
+	
+	<div class="errors">
+ 		<%= flash[:error] %>
+	</div>
+    <div class="nav">
+		<center>
+		<%= link_to "My Topics", categories_path %> | 
+		<%= link_to "My Grades", questions_path %> |
+		<%= link_to "My Responses", responses_path %> |
         <% if current_user %>
-        <%= link_to "Edit Profile", edit_user_path(current_user.id)%>
-        <%= link_to "Logout", :logout%>
+        	<%= link_to "Edit Profile", edit_user_path(current_user.id)%> |
+       	 	<%= link_to "Logout", :logout%>
         <% else %>
-        <%= link_to "Register", new_user_path%> | 
-        <%= link_to "Login", :login %>
+        	<%= link_to "Register", new_user_path%> | 
+        	<%= link_to "Login", :login %>
         <% end %>
-    </div>
+		</center>
+	</div>
+	
+	<div class="content">
+		<%= yield %>
+	</div>
  
- 
-<%= yield %>
+	</div>
  
 </body>
 </html>

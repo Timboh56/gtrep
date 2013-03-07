@@ -8,8 +8,8 @@ class ApplicationController < ActionController::Base
   protected
 
   def permission_denied
-    puts "BULLLSHIT"
     flash[:error] = "Sorry, you are not allowed to access that page."
+    redirect_to :back
   end
     
   def current_user_session
@@ -20,5 +20,14 @@ class ApplicationController < ActionController::Base
   def current_user
     return @current_user if defined?(@current_user)
     @current_user = current_user_session && current_user_session.record
+  end
+  
+  def redirect_back_or_default(default)
+    redirect_to(session[:return_to] || default)
+    session[:return_to] = nil
+  end
+  
+  def flash_and_form_errors
+    
   end
 end

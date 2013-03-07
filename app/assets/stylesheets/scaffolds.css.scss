@@ -1,16 +1,23 @@
 body {
   background-color: #fff;
   color: #333;
-  font-family: verdana, arial, helvetica, sans-serif;
+  font-family: "adelle", arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
 }
 
-p, ol, ul, td {
+h1 {
+  font-family: "aw-conqueror-carved-two", "verdana";
+  font-size: 2em;
+}
+
+p, ol, ul, td, tr {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
+  text-align:left;
 }
+
 
 pre {
   background-color: #eee;
@@ -66,4 +73,34 @@ div {
     font-size: 12px;
     list-style: square;
   }
+}
+
+.centering {
+  margin:0px auto;
+  width: 50%;
+  height: 50%;
+  text-align: left;
+}
+
+.sections {
+
+}
+
+.nav {
+  border-radius: 10px;
+  border-color: black;
+  border-width: 10px;
+}
+
+.errors {
+  background-color: red;
+  color: white;
+  width: inherit;
+
+}
+
+.content {
+	margin: 20%;
+	margin-top: 10%;
+	width: 60%
 }

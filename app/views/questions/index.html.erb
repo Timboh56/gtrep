@@ -13,10 +13,10 @@
 <% @questions.each do |question| %>
   <tr>
     <td><%= question.text %></td>
-    <td><%= question.category %></td>
-    <td><%= question.type %></td>
+    <td><%= question.categories %></td>
+    <td><%= question.question_type %></td>
     <td><%= if permitted_to? :show, question
-		link_to "Show", show_question_path(question)
+		link_to "Show", question, :action => :show
 	end %></td>
     <td><%= if permitted_to? :edit, question 
 		link_to "Edit", edit_question_path(question)
@@ -28,9 +28,6 @@
 <% end %>
 </table>
 
-<% if permitted_to? :create, Question.new %>
-  <p><%= link_to "New Question", new_question_path %></p>
-<% end %>
 <br />
 
 <%= link_to 'New Question', new_question_path %>

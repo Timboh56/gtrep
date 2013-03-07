@@ -1,3 +1,5 @@
+<%= flash[:error] %>
+
 <h1>Listing users</h1>
 <p id="notice"><%= notice %></p>
 <table>
@@ -15,9 +17,16 @@
     <td><%= user.username %></td>
     <td><%= user.email %></td>
     <td><%= user.roles.collect{ |r| r.name }.join(", ") %></td>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= if permitted_to? 'user', 'show' 
+		link_to 'Show', user 
+	end %></td>
+    <td><%= if (permitted_to? 'user', 'edit') && user.username == current_user.username 
+		link_to 'Edit', edit_user_path(user) 
+	end %></td>
+    <td><%= if permitted_to? 'user', 'destroy'
+		link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete 
+	end %></td>
+	
   </tr>
 <% end %>
 </table>
