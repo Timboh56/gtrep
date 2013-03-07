@@ -1,11 +1,11 @@
 class User < ActiveRecord::Base
-  attr_accessible :username, :email, :password, :password_confirmation
+  attr_accessible :username, :email, :password, :password_confirmation, :role_ids
   acts_as_authentic
+  has_many :responses
   has_many :assignments
   has_many :roles, :through => :assignments
   
   def role_symbols
-    roles = ['admin','teacher','student']
     roles.map do |role|
       role.name.underscore.to_sym
     end

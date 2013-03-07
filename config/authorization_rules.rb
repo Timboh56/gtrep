@@ -1,9 +1,10 @@
-authorization do
-	role: admin do
-		has_permission_on [:categories, :users, :questions, :answers], :to => [:index, :show, :new, :create, :edit, :update, :destroy]	
-	end
-  
-  role: student do
-    has_permission_on [:categories, :users, :questions], :to => [:index, :show, :new]
-  
-end
+authorization do  
+  role :admin do  
+    has_permission_on [:articles, :comments], :to => [:index, :show, :new, :create, :edit, :update, :destroy]  
+  end  
+    
+  role :guest do  
+    has_permission_on :articles, :to => [:index, :show]  
+    has_permission_on :comments, :to => [:new, create]  
+  end  
+end  

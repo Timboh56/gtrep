@@ -1,4 +1,6 @@
 Gtrep::Application.routes.draw do
+  resources :responses
+
   resources :categories
 
   resources :answers
@@ -8,6 +10,11 @@ Gtrep::Application.routes.draw do
   resources :users, :user_sessions
   match 'login' => 'user_sessions#new', :as => :login
   match 'logout' => 'user_sessions#destroy', :as => :logout
+  
+  root :to => 'user_session#new'
+  match 'permission_denied' => 'layouts/permission_denied.html.erb'
+  
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
