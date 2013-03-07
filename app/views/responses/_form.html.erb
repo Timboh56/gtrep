@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :answer %><br />
-    <%= f.text_field :answer %>
+    <%= select("response","answer", @answer.collect { |d| d.text }) %>
   </div>
   <div class="field">
     <%= f.label :question %><br />

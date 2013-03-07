@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   filter_resource_access
+  caches_action :index
   
   # GET /users
   # GET /users.json

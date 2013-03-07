@@ -2,6 +2,8 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   filter_resource_access
+  caches_action :index
+  
   
   def index
     @questions = Question.all
@@ -44,6 +46,7 @@ class QuestionsController < ApplicationController
   # POST /questions
   # POST /questions.json
   def create
+    expire_action :action => :index
     @question = Question.new(params[:question])
 
     respond_to do |format|
