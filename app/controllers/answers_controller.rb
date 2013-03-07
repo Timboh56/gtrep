@@ -5,6 +5,7 @@ class AnswersController < ApplicationController
   # GET /answers.json
   def index
     @answers = Answer.all
+    @questions = Question.all
 
     respond_to do |format|
       format.html # index.html.erb

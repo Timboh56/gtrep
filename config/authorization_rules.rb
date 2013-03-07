@@ -6,7 +6,9 @@ authorization do
   role :guest do  
     has_permission_on :questions, :to => [:index, :show] 
     has_permission_on :categories, :to => [:index, :show]  
-     
+    has_permission_on :user_sessions, :to => [:new]
+    has_permission_on :users, :to => [:new, :login ]  
+      
   end  
   
   role :teacher do

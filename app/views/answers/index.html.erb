@@ -16,7 +16,7 @@
     <td><%= answer.text %></td>
     <td><%= answer.answer_type %></td>
     <td><%= answer.correct %></td>
-    <td><%= answer.questions %></td>
+    <td><%= @questions.collect { |d| d.text } %></td>
     <td><%= link_to 'Show', answer %></td>
     <td><%= link_to 'Edit', edit_answer_path(answer) %></td>
     <td><%= link_to 'Destroy', answer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
