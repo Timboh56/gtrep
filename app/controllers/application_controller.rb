@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   def permission_denied
     flash[:error] = "Sorry, you are not allowed to access that page."
-    redirect_to :back
+    redirect_to new_user_session_path
   end
     
   def current_user_session

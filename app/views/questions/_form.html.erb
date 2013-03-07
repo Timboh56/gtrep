@@ -1,4 +1,3 @@
-<%= flash %>
 <%= form_for(@question) do |f| %>
   <% if @question.errors.any? %>
     <div id="error_explanation">
@@ -22,11 +21,11 @@
   </div>
   <div class="field">
     <%= f.label "Type of question?" %><br />
-    <%= f.text_field :type %>
+    <%= f.text_field :question_type %>
   </div>
   <div class="field">
-	  <%= f.label "Select an answer: " %>
-  	  <%= @answers %>
+	  <%= f.label "Select an answer: " %> <br />
+  	  <%= select("question", "answers", @answers.collect{ |d| d.text }, {:include_blank =>true})  %>
   </div>
   <div class="actions">
     <%= f.submit %>

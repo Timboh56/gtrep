@@ -11,17 +11,15 @@
     </div>
   <% end %>
 
+
   <div class="field">
-    <%= f.label :answer %><br />
-    <%= select("response","answer", @answer.collect { |d| d.text }) %>
+    <%= f.label "Choose an Question" %><br />
+    <%= select(@questions.collect { |d| d.text }) %>
   </div>
+
   <div class="field">
-    <%= f.label :question %><br />
-    <%= f.text_field :question %>
-  </div>
-  <div class="field">
-    <%= f.label :user %><br />
-    <%= f.text_field :user %>
+    <%= f.label "Choose an Answer" %><br />
+    <%= select("response","answers", @answers.collect { |d| d.text }) %>
   </div>
   <div class="actions">
     <%= f.submit %>
