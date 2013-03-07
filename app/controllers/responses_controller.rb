@@ -1,4 +1,6 @@
 class ResponsesController < ApplicationController
+  filter_resource_access
+  
   # GET /responses
   # GET /responses.json
   def index

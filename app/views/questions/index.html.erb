@@ -13,15 +13,24 @@
 <% @questions.each do |question| %>
   <tr>
     <td><%= question.text %></td>
-    <td><%= question.categories %></td>
+    <td><%= question.category %></td>
     <td><%= question.type %></td>
-    <td><%= link_to 'Show', question %></td>
-    <td><%= link_to 'Edit', edit_question_path(question) %></td>
-    <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= if permitted_to? :show, question
+		link_to "Show", show_question_path(question)
+	end %></td>
+    <td><%= if permitted_to? :edit, question 
+		link_to "Edit", edit_question_path(question)
+	end	%></td>
+    <td><%= if permitted_to? :destroy, question 
+		link_to "Destroy", question, :method => :delete , :confirm => "Are you sure?"
+	end %></td>
   </tr>
 <% end %>
 </table>
 
+<% if permitted_to? :create, Question.new %>
+  <p><%= link_to "New Question", new_question_path %></p>
+<% end %>
 <br />
 
 <%= link_to 'New Question', new_question_path %>

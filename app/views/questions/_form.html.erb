@@ -16,8 +16,8 @@
     <%= f.text_field :text %>
   </div>
   <div class="field">
-    <%= f.label :categories %><br />
-	<%= select("question", "category", @categories.collect { |d| d.name }, {:include_blank => true}) %>
+    <%= f.label :category %><br />
+	<%= select("question", "category_id", @categories.collect { |d| d.name }, {:include_blank => true}) %>
   </div>
   <div class="field">
     <%= f.label "Type of question?" %><br />

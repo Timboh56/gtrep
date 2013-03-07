@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def permission_denied
+    puts "BULLLSHIT"
     flash[:error] = "Sorry, you are not allowed to access that page."
   end
     
