@@ -11,6 +11,7 @@ h1 {
   top: 25%;
   font-family: "aw-conqueror-carved-two", "Arial";
   font-size: 3.5em;
+  left: -25px;
   width: 600px;
   line-height: .7em;
   text-align: inherit;
@@ -42,12 +43,14 @@ pre {
 
 a {
   color: #000;
+  font-size:1em;
+  text-decoration: none;
   &:visited {
     color: #666;
   }
   &:hover {
-    color: #fff;
-    background-color: #000;
+    color: #FFFFFF;
+    background-color: #FF0000;
   }
 }
 

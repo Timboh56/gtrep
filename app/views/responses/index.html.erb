@@ -1,4 +1,4 @@
-<h1>Listing responses</h1>
+<h1>My Responses</h1>
 
 <table>
   <tr>
@@ -12,9 +12,9 @@
 
 <% @responses.each do |response| %>
   <tr>
-    <td><%= response.answer %></td>
-    <td><%= response.question %></td>
-    <td><%= response.user %></td>
+    <td><%= response.answer.text %></td>
+    <td><%= response.question.text %></td>
+    <td><%= response.user.username %></td>
     <td><%= link_to 'Show', response %></td>
     <td><%= link_to 'Edit', edit_response_path(response) %></td>
     <td><%= link_to 'Destroy', response, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -39,11 +39,14 @@ class ResponsesController < ApplicationController
   # GET /responses/1/edit
   def edit
     @response = Response.find(params[:id])
+    @questions = Question.all
+    @answers = Answer.all
   end
 
   # POST /responses
   # POST /responses.json
   def create
+    params[:response][:user_id] = current_user.id
     @response = Response.new(params[:response])
 
     respond_to do |format|

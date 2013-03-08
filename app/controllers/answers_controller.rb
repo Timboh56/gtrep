@@ -17,6 +17,7 @@ class AnswersController < ApplicationController
   # GET /answers/1.json
   def show
     @answer = Answer.find(params[:id])
+    @question = Question.find(@answer.questions_id)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -39,6 +40,7 @@ class AnswersController < ApplicationController
   # GET /answers/1/edit
   def edit
     @answer = Answer.find(params[:id])
+    @questions = Question.all
   end
 
   # POST /answers

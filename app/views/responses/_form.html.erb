@@ -14,13 +14,14 @@
 
   <div class="field">
     <%= f.label "Choose an Question" %><br />
-    <%= select(@questions.collect { |d| d.text }) %>
+    <%= select("response", "question_id", @questions.collect { |d| [d.text,d.id] }) %>
   </div>
 
   <div class="field">
     <%= f.label "Choose an Answer" %><br />
-    <%= select("response","answers", @answers.collect { |d| d.text }) %>
+    <%= select("response","answer_id", @answers.collect { |d| [d.text,d.id] }) %>
   </div>
+  	
   <div class="actions">
     <%= f.submit %>
   </div>

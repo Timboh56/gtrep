@@ -1,9 +1,9 @@
-<%= flash[:error] %>
-
 <h1>Welcome, <%= current_user.username %> </h1>
 <p id="notice"><%= notice %></p>
 
  
 <br />
  
-<%= link_to 'New User', new_user_path %>
+<% if permitted_to? :create, :users 
+     link_to 'New User', new_user_path 
+   end %>
