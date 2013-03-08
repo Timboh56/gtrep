@@ -1,0 +1,1 @@
+GTRep is a web app used for gauging audience responses in live settings. Users can sign up as teachers or students, and teachers can post questions for their courses while students can reply to the questions by using multiple choice answers or individual open ended submitted answers. Students can also view visualizations of their progress in each course or category of questions. 
