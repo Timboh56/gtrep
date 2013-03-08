@@ -17,11 +17,15 @@
   </div>
   <div class="field">
     <%= f.label :category %><br />
-	<%= select("question", "category_id", @categories.collect { |d| [d.name,d.id] }, {:include_blank => true}) %>
+	<%= select("question", "category_id", @categories.collect { |d| [d.name,d.id] } %>
   </div>  
   <div class="field">
-    <%= f.label "Type of question?" %><br />
+    <%= f.label "Type of question? (Optional)" %><br />
     <%= f.text_field :question_type %>
+  </div>
+  <div class="field">
+    <%= f.label "Keep this question open (start allowing responses)? " %><br />
+    <%= check_box("question","open", {}, checked_value="1", unchecked_value="0") %>
   </div>
   <div class="actions">
     <%= f.submit %>

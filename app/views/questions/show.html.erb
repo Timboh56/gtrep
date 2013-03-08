@@ -16,6 +16,11 @@
   <%= @question.question_type %>
 </p>
 
+<p>
+  <b>Is this question open (allowing responses)? </b>
+  <%= @question.open %>
+</p>
+
 <%= link_to 'Add an answer for this question', new_answer_path %>
 <br />
 <%= link_to 'Edit', edit_question_path(@question) %> |

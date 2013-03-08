@@ -8,7 +8,7 @@ authorization do
     has_permission_on :categories, :to => [:index, :show]  
     has_permission_on :user_sessions, :to => [:new, :create]
     has_permission_on :assignments, :to => [:new, :create]
-    has_permission_on :users, :to => [:new, :create ]  
+    has_permission_on :users, :to => [:new, :create, :index ]  
       
   end  
   

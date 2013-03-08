@@ -13,10 +13,10 @@
     <div class="centering">
 		
 		<div class="logo">
-			<h2>GT Rep</h2>
+			<h4>GT Rep</h4>
 			<h3>Simplify your workspace! </h3>
 		</div>
-	
+	<p id="notice"> <center> <%= notice %> </center></p>
 	<div class="errors">
  		<%= flash[:error] %>
 	</div>
@@ -44,7 +44,7 @@
 	</div>
 	
 	<div class="content">
-		<%= yield %>
+			<%= yield %>
 	</div>
  
 	</div>

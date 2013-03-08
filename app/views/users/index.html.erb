@@ -1,9 +1,19 @@
-<h1>Welcome, <%= current_user.username %> </h1>
-<p id="notice"><%= notice %></p>
+<center>
+	<h2>Welcome, <%= current_user.nil? ? "guest!" : current_user.username %> </h2>
+<p>Welcome to GTRep. Whether you're a student, a teacher, faculty, or a bored person, GTRep is a study aid as well as an audience response gauging tool for real time response gauging. </p>
 
+<% if current_user.nil? %>
+	<h2>Use it in lectures</h2>
+	<p>GTRep can be used for classroom lectures! It simply requires a device with access to the internet. Lecturers can ask questions real time and student can submit their responses.</p>
+	<h2>Visualize your progress </h2>
+	<p> Want to see how your scores look? GTRep provide data visualization tools like graphs for the responses submitted to lecture questions</p>
+	<h2>Easy and highly customizable</h2>
+	<p> With a simplistic interface, GTRep allows many features for lecturers and students alike. Why settle for bullshit?</p>
  
-<br />
+	<br />
+<% end %>
  
 <% if permitted_to? :create, :users 
      link_to 'New User', new_user_path 
    end %>
+</center>
