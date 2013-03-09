@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130308044957) do
+ActiveRecord::Schema.define(:version => 20130309070854) do
 
   create_table "answers", :force => true do |t|
     t.string   "text"
@@ -35,6 +35,21 @@ ActiveRecord::Schema.define(:version => 20130308044957) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "question_group_questions", :force => true do |t|
+    t.integer  "question_id"
+    t.integer  "question_group_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  create_table "question_groups", :force => true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.integer  "question_groups_type"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
   end
 
   create_table "questions", :force => true do |t|
@@ -81,8 +96,11 @@ ActiveRecord::Schema.define(:version => 20130308044957) do
     t.string   "crypted_password"
     t.string   "password_salt"
     t.string   "persistence_token"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+    t.integer  "login_count",       :default => 0
+    t.string   "login_ip"
+    t.datetime "last_request_at"
   end
 
 end

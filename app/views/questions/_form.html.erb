@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :category %><br />
-	<%= select("question", "category_id", @categories.collect { |d| [d.name,d.id] } %>
+	<%= select("question", "category_id", @categories.collect { |d| [d.name,d.id] }) %>
   </div>  
   <div class="field">
     <%= f.label "Type of question? (Optional)" %><br />

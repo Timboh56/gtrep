@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @question_group.name %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @question_group.user_id %>
+</p>
+
+<p>
+  <b>Question groups type:</b>
+  <%= @question_group.question_groups_type %>
+</p>
+
+
+<%= link_to 'Edit', edit_question_group_path(@question_group) %> |
+<%= link_to 'Back', question_groups_path %>

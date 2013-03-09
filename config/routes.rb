@@ -1,4 +1,6 @@
 Gtrep::Application.routes.draw do
+  resources :question_groups
+
   resources :responses
 
   resources :categories
@@ -6,7 +8,9 @@ Gtrep::Application.routes.draw do
   resources :answers
 
   resources :questions
-
+  
+  resources :question_groups
+  
   resources :users, :user_sessions
   match 'login' => 'user_sessions#new', :as => :login
   match 'logout' => 'user_sessions#destroy', :as => :logout
