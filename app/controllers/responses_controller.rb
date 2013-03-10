@@ -5,6 +5,8 @@ class ResponsesController < ApplicationController
   # GET /responses.json
   def index
     @responses = Response.all
+    @question_groups = Question_group.all
+    
 
     respond_to do |format|
       format.html # index.html.erb
@@ -29,6 +31,7 @@ class ResponsesController < ApplicationController
     @response = Response.new
     @questions = Question.all
     @answers = Answer.all
+    @question_groups = Question_group.all
     
     respond_to do |format|
       format.html # new.html.erb

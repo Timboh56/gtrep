@@ -11,17 +11,21 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= f.label "Choose an Question Group for this question:" %><br />
+    <%= select("response","question_group_id", @question_groups.collect { |d| [d.name,d.id] }) %>
+  </div>
 
   <div class="field">
-    <%= f.label "Choose an Question" %><br />
+    <%= f.label "Choose an Question:" %><br />
     <%= select("response", "question_id", @questions.collect { |d| [d.text,d.id] }) %>
   </div>
 
   <div class="field">
-    <%= f.label "Choose an Answer" %><br />
+    <%= f.label "Choose an Answer:" %><br />
     <%= select("response","answer_id", @answers.collect { |d| [d.text,d.id] }) %>
   </div>
-  	
+  
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130309070854) do
+ActiveRecord::Schema.define(:version => 20130310072345) do
 
   create_table "answers", :force => true do |t|
     t.string   "text"
@@ -52,6 +52,8 @@ ActiveRecord::Schema.define(:version => 20130309070854) do
     t.datetime "updated_at",           :null => false
   end
 
+  add_index "question_groups", ["name"], :name => "index_question_groups_on_name"
+
   create_table "questions", :force => true do |t|
     t.string   "text"
     t.integer  "category_id"
@@ -65,8 +67,9 @@ ActiveRecord::Schema.define(:version => 20130309070854) do
     t.integer  "answer_id"
     t.integer  "question_id"
     t.integer  "user_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.integer  "question_group_id"
   end
 
   add_index "responses", ["answer_id"], :name => "index_responses_on_answer_id"

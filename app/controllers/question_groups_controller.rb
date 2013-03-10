@@ -25,6 +25,9 @@ class QuestionGroupsController < ApplicationController
   # GET /question_groups/new.json
   def new
     @question_group = QuestionGroup.new
+    
+    # Get all questions so user can add questions
+    @questions = Question.all 
 
     respond_to do |format|
       format.html # new.html.erb

@@ -1,19 +1,22 @@
 <h1> View Response </h1>
 <p id="notice"><%= notice %></p>
-
-<p>
-  <b>User:</b>
-  <%= @response.user.username %>
-</p>
 <p>
   <b>Question:</b>
   <%= @response.question.text %>
 </p>
 
 <p>
-<p>
   <b>Answer:</b>
   <%= @response.answer.text %>
+</p>
+
+<p>
+  <b>Question Group:</b>
+  <%= @response.question_group.name %>
+</p>
+<p>
+  <b>Submitted by
+  <%= @response.user.username %>
 </p>
 
 <p>
