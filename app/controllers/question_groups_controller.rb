@@ -25,6 +25,7 @@ class QuestionGroupsController < ApplicationController
   # GET /question_groups/new.json
   def new
     @question_group = QuestionGroup.new
+    @questions = Question.all
     
     # Get all questions so user can add questions
     @questions = Question.all 
@@ -38,6 +39,8 @@ class QuestionGroupsController < ApplicationController
   # GET /question_groups/1/edit
   def edit
     @question_group = QuestionGroup.find(params[:id])
+    @questions = Question.all
+    
   end
 
   # POST /question_groups
