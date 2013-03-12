@@ -12,7 +12,7 @@
 
 <p>
   <b>Question Group:</b>
-  <%= @response.question_group.name %>
+  <%=  @response.question_group.nil? ? "None" : @response.question_group.name  %>
 </p>
 <p>
   <b>Submitted by

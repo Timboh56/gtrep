@@ -11,7 +11,7 @@
 
 <% @responses.each do |response| %>
   <tr>
-    <td><%= link_to (response.question_group.nil? ?  "" : response.question_group.name) %></td> 
+    <td><%= link_to (response.question_group.nil? ?  "None" : response.question_group.name) %></td> 
     <td><%= response.question.text %></td>	 
     <td><%= response.answer.text %></td>
     <td><%= link_to 'Show', response %></td>

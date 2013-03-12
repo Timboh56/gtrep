@@ -4,7 +4,7 @@ class ResponsesController < ApplicationController
   # GET /responses
   # GET /responses.json
   def index
-    @responses = Response.all
+    @responses = Response.where( user_id: current_user.id )
     @question_groups = Question_group.all
     
 

@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Name:</b>
+  <b>Question Group:</b>
   <%= @question_group.name %>
 </p>
 
@@ -14,6 +14,15 @@
   <b>Question groups type:</b>
   <%= @question_group.question_groups_type %>
 </p>
+
+<p>
+	<b>Questions in this question group: </b>
+	<%= unless @question_group_questions.nil?
+	      @question_group_questions.each { |q| %>
+		<h5> <%= q.text %> </h5>
+		
+	<% 	}
+	  end  %>
 
 
 <%= link_to 'Edit', edit_question_group_path(@question_group) %> |

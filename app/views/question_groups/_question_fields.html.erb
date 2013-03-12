@@ -1,0 +1,18 @@
+    <div class="field" id="questions">
+  		<div class="select">
+    		"Add questions to your group: "<br />
+    		<select id="question_selector">
+				<%= @questions.each { |q|  %>
+					<option value="<%= q.id %>" > <%= q.text %> </option>
+				<% } %>
+		</select>
+  		</div>
+  
+  <div class="question_list">
+     Questions added: <br />
+  </div>
+  
+  <div class="field" id="questions">
+  </div>
+  
+  <br />
