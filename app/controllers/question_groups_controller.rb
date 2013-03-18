@@ -14,7 +14,7 @@ class QuestionGroupsController < ApplicationController
   # GET /question_groups/1.json
   def show
     @question_group = QuestionGroup.find(params[:id])
-    @question_group_questions = QuestionGroupQuestion.find_by_question_id(params[:id]);
+    @question_group_questions = QuestionGroupQuestion.find_all_by_question_group_id(params[:id]);
 
     respond_to do |format|
       format.html # show.html.erb
@@ -26,9 +26,7 @@ class QuestionGroupsController < ApplicationController
   # GET /question_groups/new.json
   def new
     @question_group = QuestionGroup.new
-    @question_group_question = QuestionGroupQuestion.new
-    @questions = Question.all
-    
+    @question_group_question = @question_group.question_group_questions.new
     # Get all questions so user can add questions
     @questions = Question.all 
 
@@ -48,12 +46,25 @@ class QuestionGroupsController < ApplicationController
   # POST /question_groups
   # POST /question_groups.json
   def create
-    params[:question_group][:user_id] = current_user.id
+    params[:question_group][:user_id]= current_user.id
+
     @question_group = QuestionGroup.new(params[:question_group])
-    puts(params[:question_group]);
+    puts("tits" + params[:question_group_questions].to_s)
 
     respond_to do |format|
       if @question_group.save
+        
+        # save all dynamically added questions from form
+        params[:question_group_questions][:question_ids].each {
+            |q| @question_group_questions = QuestionGroupQuestion.new(
+            {
+              "question_id" => q, 
+              "question_group_id" => @question_group.id
+            }
+          )
+          @question_group_questions.save
+        }
+             
         format.html { redirect_to @question_group, notice: 'Question group was successfully created.' }
         format.json { render json: @question_group, status: :created, location: @question_group }
       else

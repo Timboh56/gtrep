@@ -1,4 +1,5 @@
 $(function(){
+	
 	var question_add = {
 		'init' : function() {			
 			this.questions_added = {};
@@ -22,13 +23,13 @@ $(function(){
 			return (this.questions_added[id] == undefined);
 		},
 		'display' : function(id, question_text) {
-			var self = this;
+			var self = this;			
 			var hidden_tag = '<input type="hidden"' +  
 				'class=\"hidden_' + id + '\"' + 
-				'name=\"question_group_questions\"' + 
+				'name=\"question_group_questions[question_ids][]\"' + 
 				'value=\"' + id	 + 
 				'\"> ';
-			$('#questions').append(hidden_tag);
+			$('#question_group_questions').append(hidden_tag);
 			$('.question_list').append(
 				$('<h5 id=\"delete_' + id + '\">' + question_text + ' <a id=\"remove\">[x]</a> </h5>')
 					.on('click', function() {
@@ -44,6 +45,5 @@ $(function(){
 		e.preventDefault();
 		question_add.add();
 	});
-	
 }
 );

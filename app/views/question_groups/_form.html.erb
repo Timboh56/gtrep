@@ -21,14 +21,14 @@
     <%= select("question_group", :question_groups_type,{ "Survey" => "1", "Test" => "2", "Exam" => "3" }) %>
   </div>
   <br />
-  <%= f.fields_for :questions do |q| %>
-    <%= render "question_fields", :f => q %>
+  <%= f.fields_for @question_group_question do |question| %>
+    <%= render "question_fields", :f => question %>
   <% end %>
   <%= content_tag :button, :class => :add_question_button do %>
      Add this question
   <% end %>
   <hr />
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit  %>
   </div>
 <% end %>

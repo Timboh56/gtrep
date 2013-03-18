@@ -10,6 +10,7 @@ gem 'mysql', '2.8.1'
 gem 'authlogic'
 gem 'declarative_authorization'
 gem 'json'
+gem 'cocoon'
 
 # Gems used only for assets and not required
 # in production environments by default.
