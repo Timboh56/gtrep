@@ -1,0 +1,25 @@
+<table>
+  <tr>
+    <th>Name</th>
+    <th>User</th>
+    <th>Question groups type</th>
+    <th></th>
+    <th></th>
+    <th></th>
+	
+  </tr>
+  <%= "POOP "+ object.to_s %>
+<% unless object.nil? 
+  object.each do |object| %>
+  <tr>
+    <td><%= object.name %></td>
+    <td><%= object.user_id %></td>
+    <td></td>
+    <td><%= link_to 'Show', object %></td>
+    <td><%= link_to 'Edit', edit_object_path(object) %></td>
+	<td><%= check_box_tag 'select', object.id %>
+  </tr>
+<% end %>
+<% end %>
+
+</table>

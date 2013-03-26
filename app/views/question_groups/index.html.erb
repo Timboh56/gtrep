@@ -1,27 +1,26 @@
 <h1>Listing question_groups</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>User</th>
-    <th>Question groups type</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @question_groups.each do |question_group| %>
-  <tr>
-    <td><%= question_group.name %></td>
-    <td><%= question_group.user_id %></td>
-    <td><%= question_group.question_groups_type %></td>
-    <td><%= link_to 'Show', question_group %></td>
-    <td><%= link_to 'Edit', edit_question_group_path(question_group) %></td>
-    <td><%= link_to 'Destroy', question_group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+<%= index_table(@question_groups) %>
 
 <br />
 
 <%= link_to 'New Question group', new_question_group_path %>
+<script src="../../assets/javascripts/application.js" type="text/javascript" charset="utf-8"></script>
+    <div class="field" id="questions">
+  		<div class="select">
+    		"Add questions to your group: "<br />
+    		<select id="question_selector">
+				<%= @questions.each { |q|  %>
+					<option value="<%= q.id %>" > <%= q.text %> </option>
+				<% } %>
+		</select>
+  		</div>
+  
+  <div class="question_list">
+     Questions added: <br />
+  </div>
+  
+  <div class="field" id="question_group_questions">
+  </div>
+  
+  <br />

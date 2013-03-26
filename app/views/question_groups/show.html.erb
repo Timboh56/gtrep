@@ -16,14 +16,11 @@
 </p>
 
 <p>
-	<b>Questions in this question group: </b>
-	<%= unless @question_group_questions.nil? 
-		@question_group_questions.each do |q| %>
-		Question ID: <%= q.question_id.to_s %>
-		<%= Question.find(q.question_id).text %>
+	<b>Questions in this question group: </b> <br />
+	<% for q in @question_group_questions %>
+			<%= Question.find(q.question_id).text %>
 		<br/ >
 	<% end %>
-	 <% end  %>
   </p>
 
 
