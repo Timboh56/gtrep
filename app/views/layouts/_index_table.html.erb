@@ -1,25 +1,37 @@
 <table>
   <tr>
-    <th>Name</th>
-    <th>User</th>
-    <th>Question groups type</th>
-    <th></th>
-    <th></th>
-    <th></th>
-	
-  </tr>
-  <%= "POOP "+ object.to_s %>
-<% unless object.nil? 
-  object.each do |object| %>
-  <tr>
-    <td><%= object.name %></td>
-    <td><%= object.user_id %></td>
-    <td></td>
-    <td><%= link_to 'Show', object %></td>
-    <td><%= link_to 'Edit', edit_object_path(object) %></td>
-	<td><%= check_box_tag 'select', object.id %>
-  </tr>
+	  <% fields.each do |f| %>
+	  	<th> <center> <%= f %> </center> </th>
+	  <% end %>
+	  <th> Actions </th>
+  </tr>  
+  <% unless object.nil? %>
+    <% object.each do |o| %>
+	    <tr>
+		  <% o.attributes.each do |field| %> 
+			<td> 
+				<%= field[1] %>
+		  	</td>
+		  <% end %>
+		  
+		   <td>
+			   <%= if permitted_to? :show, o
+			         link_to "Show", o, :action => :show
+			       end %>
+			   <%= if permitted_to? :edit, o 
+		              link_to "Edit", edit_question_path(o)
+	               end	
+				   # send("edit_#{uncapitalize(klass.name)}_path(o)")
+				   
+				   %>
+				   
+			   <%= if permitted_to? :destroy, o 
+		              link_to "Destroy", o, :method => :delete , :confirm => "Are you sure?"
+	               end %>
+		   </td>
+		   </tr>	   
+	  <% end %>
 <% end %>
-<% end %>
+
 
 </table>

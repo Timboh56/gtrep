@@ -1,4 +1,6 @@
 Gtrep::Application.routes.draw do
+  get "password_resets/new"
+
   resources :question_groups
 
   resources :responses
@@ -12,6 +14,8 @@ Gtrep::Application.routes.draw do
   resources :question_groups
   
   resources :question_group_questions
+  
+  resources :password_resets
   
   resources :users, :user_sessions
   match 'login' => 'user_sessions#new', :as => :login

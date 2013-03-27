@@ -11,6 +11,8 @@ gem 'authlogic'
 gem 'declarative_authorization'
 gem 'json'
 gem 'cocoon'
+gem 'rb-fsevent', '~> 0.9'
+
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -24,6 +26,13 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+group :test do
+  gem "factory_girl_rails"
+  gem "capybara"
+  gem "guard-rspec"
+end
+
+gem "rspec-rails", :group => [:test, :development]
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password

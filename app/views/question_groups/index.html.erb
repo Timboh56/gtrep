@@ -1,26 +1,5 @@
 <h1>Listing question_groups</h1>
 
-<%= index_table(@question_groups) %>
+<%= index_table(@question_groups,QuestionGroup) %>
 
 <br />
-
-<%= link_to 'New Question group', new_question_group_path %>
-<script src="../../assets/javascripts/application.js" type="text/javascript" charset="utf-8"></script>
-    <div class="field" id="questions">
-  		<div class="select">
-    		"Add questions to your group: "<br />
-    		<select id="question_selector">
-				<%= @questions.each { |q|  %>
-					<option value="<%= q.id %>" > <%= q.text %> </option>
-				<% } %>
-		</select>
-  		</div>
-  
-  <div class="question_list">
-     Questions added: <br />
-  </div>
-  
-  <div class="field" id="question_group_questions">
-  </div>
-  
-  <br />
