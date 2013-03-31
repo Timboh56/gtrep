@@ -1,26 +1,8 @@
 <h1>My Submitted Responses</h1>
 
-<table>
-  <tr>
-    <th>Question Group</th>
-    <th>Question</th>
-    <th>Answer</th>
-    <th></th>
-    <th></th>
-  </tr>
+<%= @responses.empty? ? "You haven't submitted any responses yet, yo." : index_table(@responses,Response) %>
 
-<% @responses.each do |response| %>
-  <tr>
-    <td><%= link_to (response.question_group.nil? ?  "None" : response.question_group.name) %></td> 
-    <td><%= response.question.text %></td>	 
-    <td><%= response.answer.text %></td>
-    <td><%= link_to 'Show', response %></td>
-    <td><%= link_to 'Edit', edit_response_path(response) %></td>
-    <td><%= link_to 'Destroy', response, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
+<br />
 <br />
 
 <%= link_to 'New Response', new_response_path %>
