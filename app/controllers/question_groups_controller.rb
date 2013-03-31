@@ -26,7 +26,8 @@ class QuestionGroupsController < ApplicationController
   # GET /question_groups/new.json
   def new
     @question_group = QuestionGroup.new
-    @question_group_question = @question_group.question_group_questions.new
+    @question_group_questions = @question_group.question_group_questions.new
+    
     # Get all questions so user can add questions
     @questions = Question.all 
 
@@ -39,7 +40,9 @@ class QuestionGroupsController < ApplicationController
   # GET /question_groups/1/edit
   def edit
     @question_group = QuestionGroup.find(params[:id])
-    @questions = Question.all
+    @questions = Question.all rescue "wtf"
+    @question_group_questions = QuestionGroupQuestion.find_all_by_question_group_id(params[:id]) rescue "No question exists"
+    
     
   end
 

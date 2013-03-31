@@ -20,8 +20,8 @@
 	<%= select("question", "category_id", @categories.collect { |d| [d.name,d.id] }) %>
   </div>  
   <div class="field">
-    <%= f.label "Type of question? (Optional)" %><br />
-    <%= f.text_field :question_type %>
+    <%= f.label "Type of question?" %><br />
+    <%= select("question","question_type", {"Open ended" => "1", "Multiple Choice" => "2" }) %>
   </div>
   <div class="field">
     <%= f.label "Keep this question open (start allowing responses)? " %><br />
