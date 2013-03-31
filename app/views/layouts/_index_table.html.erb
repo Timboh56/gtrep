@@ -22,10 +22,11 @@
 			   <%= if permitted_to? :show, o
 			         link_to "Show", o, :action => :show
 			       end %>
+				   
+				   <% puts klass.to_s %>
 			   <%= if permitted_to? :edit, o 
-		              link_to "Edit", edit_question_path(o)
+		              link_to "Edit", edit_polymorphic_path(o)
 	               end	
-				   # send("edit_#{uncapitalize(klass.name)}_path(o)")
 			   %>	   
 			   <%= if permitted_to? :destroy, o 
 		              link_to "Destroy", o, :method => :delete , :confirm => "Are you sure?"

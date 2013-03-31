@@ -12,11 +12,6 @@ module ApplicationHelper
     string.gsub /_id|_/, " "
   end
   
-  # uncapitalize makes input string completely lower case
-  def uncapitalize(string)
-    string[0, string.length].downcase
-  end
-  
   # filterObject removes input fields (an array of strings to be matched) from object
   def filterObject(object, fields)
     regex = fields.join("|")
@@ -26,5 +21,4 @@ module ApplicationHelper
   def username(id)
     User.find(id).username rescue "N/A"
   end
-  
 end

@@ -40,8 +40,10 @@ class QuestionGroupsController < ApplicationController
   # GET /question_groups/1/edit
   def edit
     @question_group = QuestionGroup.find(params[:id])
-    @questions = Question.all rescue "wtf"
-    @question_group_questions = QuestionGroupQuestion.find_all_by_question_group_id(params[:id]) rescue "No question exists"
+    @questions_for_question_group = QuestionGroupQuestion.find_by_question_group_id(params[:id])
+    
+    @questions = Question.all
+    @question_group_questions = QuestionGroupQuestion.find_all_by_question_group_id(params[:id]) rescue "No question with this question group exists"
     
     
   end
