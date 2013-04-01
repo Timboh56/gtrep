@@ -40,12 +40,14 @@ class QuestionGroupsController < ApplicationController
   # GET /question_groups/1/edit
   def edit
     @question_group = QuestionGroup.find(params[:id])
-    @questions_for_question_group = QuestionGroupQuestion.find_by_question_group_id(params[:id])
+        
+    # original list of questions in the question group specified by parameters
+    @orig_question_group_questions = QuestionGroupQuestion.find_all_by_question_group_id(params[:id])
     
+    # list of all questions for selector that allows users to add new questions
+    # subject to change with a search textfield
     @questions = Question.all
-    @question_group_questions = QuestionGroupQuestion.find_all_by_question_group_id(params[:id]) rescue "No question with this question group exists"
-    
-    
+        
   end
 
   # POST /question_groups
@@ -54,14 +56,13 @@ class QuestionGroupsController < ApplicationController
     params[:question_group][:user_id]= current_user.id
 
     @question_group = QuestionGroup.new(params[:question_group])
-    puts("tits" + params[:question_group_questions].to_s)
 
     respond_to do |format|
       if @question_group.save
         
         # save all dynamically added questions from form
         params[:question_group_questions][:question_ids].each {
-            |q| @question_group_questions = QuestionGroupQuestion.new(
+          |q| @question_group_questions = QuestionGroupQuestion.new(
             {
               "question_id" => q, 
               "question_group_id" => @question_group.id
@@ -83,9 +84,27 @@ class QuestionGroupsController < ApplicationController
   # PUT /question_groups/1.json
   def update
     @question_group = QuestionGroup.find(params[:id])
+    
+    # original list of questions, select question_id column where question_group_id = params[:id]
+    # convert the results into an array ,convert the array into an array of question_ids in string format
+    # rather than question group models
+    orig_question_group_questions = QuestionGroupQuestion.where("question_group_id" => params[:id]).select("question_id").to_a.collect { |d| d.question_id.to_s }
 
     respond_to do |format|
       if @question_group.update_attributes(params[:question_group])
+        new_question_group_questions = params[:question_group_questions][:question_ids]
+        puts(new_question_group_questions.to_s)
+        puts(orig_question_group_questions.to_s)
+        
+        # test if the original set of questions is the same as the updated set
+        if orig_question_group_questions == new_question_group_questions
+          
+        else
+          
+        end
+
+
+        
         format.html { redirect_to @question_group, notice: 'Question group was successfully updated.' }
         format.json { head :no_content }
       else

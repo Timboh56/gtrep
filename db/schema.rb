@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130331024211) do
+ActiveRecord::Schema.define(:version => 20130401010913) do
 
   create_table "answers", :force => true do |t|
     t.string   "text"
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(:version => 20130331024211) do
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
     t.integer  "question_group_id"
+    t.boolean  "correct"
   end
 
   add_index "responses", ["answer_id"], :name => "index_responses_on_answer_id"

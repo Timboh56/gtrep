@@ -11,7 +11,7 @@ module ApplicationHelper
   def normalizeField(string)
     string.gsub /_id|_/, " "
   end
-  
+
   # filterObject removes input fields (an array of strings to be matched) from object
   def filterObject(object, fields)
     regex = fields.join("|")
@@ -21,4 +21,5 @@ module ApplicationHelper
   def username(id)
     User.find(id).username rescue "N/A"
   end
+  
 end
