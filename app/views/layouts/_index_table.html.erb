@@ -7,7 +7,7 @@
   </tr>  
   <% unless object.nil? %>
     <% object.each do |o| %>
-	    <tr>
+	    <tr class="data">
 		  <% filterObject(o.attributes,['id','updated_at','created_at']).each do |field| %> 
 			<td> 
 				<% if field[0] == 'user_id' %>

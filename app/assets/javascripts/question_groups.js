@@ -13,6 +13,8 @@ $(function(){
 		'add' : function() {
 			var id = $('#question_selector option:selected').val(),
 			  question_text = $('#question_selector option:selected').text();
+			  
+			// check if this question has already been added
   			if (this.check(id)) {
 				this.questions_added[id] = question_text;
 				this.display(id,question_text);
