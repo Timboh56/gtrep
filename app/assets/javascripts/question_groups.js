@@ -16,8 +16,6 @@ $(function(){
   			if (this.check(id)) {
 				this.questions_added[id] = question_text;
 				this.display(id,question_text);
-			}  else {
-				console.log("Question added already");
 			}
 		},
 		'remove' : function(id) {

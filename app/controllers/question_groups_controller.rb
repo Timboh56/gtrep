@@ -96,15 +96,33 @@ class QuestionGroupsController < ApplicationController
         puts(new_question_group_questions.to_s)
         puts(orig_question_group_questions.to_s)
         
-        # test if the original set of questions is the same as the updated set
-        if orig_question_group_questions == new_question_group_questions
+        # test if the original set of questions is not the same as the updated set
+        if orig_question_group_questions != new_question_group_questions
+          @question_group_questions_add = new_question_group_questions - orig_question_group_questions
           
-        else
+          # for each newly added question, add to database
+          @question_group_questions_add.each { 
+            |add| 
+            new_question_group_question = QuestionGroupQuestion.new(
+              {
+                :question_id => add,
+                :question_group_id => params[:id] 
+              }
+            ).save
+          }
+          
+          @question_group_questions_remove = orig_question_group_questions - new_question_group_questions
+          
+          # remove each question_group_question from the computed remove list
+          @question_group_questions_remove.each { 
+            |question| QuestionGroupQuestion.where(
+              :question_group_id => params[:id],
+              :question_id => question
+            ).destroy_all
+          }
           
         end
-
-
-        
+            
         format.html { redirect_to @question_group, notice: 'Question group was successfully updated.' }
         format.json { head :no_content }
       else
