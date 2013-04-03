@@ -88,14 +88,14 @@ class QuestionGroupsController < ApplicationController
     # original list of questions, select question_id column where question_group_id = params[:id]
     # convert the results into an array ,convert the array into an array of question_ids in string format
     # rather than question group models
-    orig_question_group_questions = QuestionGroupQuestion.where("question_group_id" => params[:id]).select("question_id").to_a.collect { |d| d.question_id.to_s }
+    orig_question_group_questions = QuestionGroupQuestion.where("question_group_id" => params[:id])
 
     respond_to do |format|
       if @question_group.update_attributes(params[:question_group])
-        new_question_group_questions = params[:question_group_questions][:question_ids]
-        puts(new_question_group_questions.to_s)
-        puts(orig_question_group_questions.to_s)
         
+        # get all the question_group_questions submitted. if none were submitted, then initialize an empty array
+        new_question_group_questions = params[:question_group_questions].nil? ? Array.new : params[:question_group_questions][:question_ids]
+
         # test if the original set of questions is not the same as the updated set
         if orig_question_group_questions != new_question_group_questions
           @question_group_questions_add = new_question_group_questions - orig_question_group_questions

@@ -12,8 +12,13 @@
   <% end %>
 
   <div class="field">
-    <%= f.label "Choose an Question Group for this question:" %><br />
-    <%= select("response","question_group_id", @question_groups.collect { |d| [d.name,d.id] }) %>
+    <%= f.label "Choose an Question Group for this question (select blank if answering individual question): " %><br />
+    <%= select("response","question_group_id", @question_groups.collect { |d| [d.name,d.id] }, { :include_blank => true }) %>
+  </div>
+  
+  <div class="questions">
+	  
+	  
   </div>
 
   <div class="field">

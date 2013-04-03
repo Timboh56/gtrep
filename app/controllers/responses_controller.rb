@@ -31,17 +31,40 @@ class ResponsesController < ApplicationController
     @response = Response.new
     @questions = Question.all
     @answers = Answer.all
-    @question_groups = Question_group.all
+    @question_groups = QuestionGroup.all
     
     respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @response }
+      
+      # detect for ajax get request, render all questions within 
+      # the requested question_group and answers for all multiple choice questions
+      if request.xhr?
+        @question_group_questions = QuestionGroupQuestion.where(
+          "question_group_id" => params[:question_group_id]
+        ).collect { 
+          |d| Question.find(d.question_id) 
+        }
+        @question_group_questions_answers = @question_group_questions.collect { 
+          |d|  d.question_type == 0 ? [d.id, Answer.find_all_by_questions_id(d.id)] : nil
+        }
+        format.json { render json: { 
+          :question_group_questions => @question_group_questions, 
+          :answers => @question_group_questions_answers 
+        }
+      }
+      else
+        # respond to normal request
+        format.html # new.html.erb
+        format.json { render json: @response }
+      end
     end
   end
 
   # GET /responses/1/edit
   def edit
     @response = Response.find(params[:id])
+    
+    # replace soon with a search feature 
+    @question_groups = QuestionGroup.all
     @questions = Question.all
     @answers = Answer.all
   end
@@ -53,12 +76,10 @@ class ResponsesController < ApplicationController
     @response = Response.new(params[:response])
 
     respond_to do |format|
+      puts('anything')
       if @response.save
         format.html { redirect_to @response, notice: 'Response was successfully created.' }
         format.json { render json: @response, status: :created, location: @response }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @response.errors, status: :unprocessable_entity }
       end
     end
   end

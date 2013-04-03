@@ -15,3 +15,9 @@
 //= require_tree .
 //= require cocoon
 
+$(function() {
+	$(".data").on("click",function(){
+		$("body").append($("<div class=\"show\">").append());
+	});
+
+})

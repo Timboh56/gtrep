@@ -23,7 +23,7 @@ authorization do
     has_permission_on :users, :to => [:edit, :update, :index, :show]
     has_permission_on :question_groups, :to => [:index, :show]  
     has_permission_on :assignments, :to => [:index, :create, :show, :edit, :update]
-    has_permission_on :responses, :to => [:index, :show, :new, :create, :edit, :update]
+    has_permission_on :responses, :to => [:index, :show, :new, :create]
   end  
   
 end  
