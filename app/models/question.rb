@@ -4,5 +4,6 @@ class Question < ActiveRecord::Base
   belongs_to :question_groups
   has_many :answers, :dependent => :destroy
   has_many :question_group_questions, :dependent => :destroy
+  has_many :responses, :dependent => :destroy
   using_access_control
 end
