@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130405013804) do
+ActiveRecord::Schema.define(:version => 20130405014204) do
 
   create_table "answers", :force => true do |t|
     t.string   "text"
@@ -74,7 +74,6 @@ ActiveRecord::Schema.define(:version => 20130405013804) do
     t.string   "text"
   end
 
-  add_index "responses", ["answer_id"], :name => "index_responses_on_answer_id"
   add_index "responses", ["question_id"], :name => "index_responses_on_question_id"
   add_index "responses", ["user_id", "question_id"], :name => "index_responses_on_user_id_and_question_id", :unique => true
   add_index "responses", ["user_id"], :name => "index_responses_on_user_id"

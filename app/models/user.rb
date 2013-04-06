@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
   attr_accessible :username, :email, :password, :password_confirmation, :role_ids
   acts_as_authentic
-  has_many :responses
+  has_many :responses, :dependent => :destroy
+  has_many :question_groups, :dependent => :destroy
   has_many :assignments
   has_many :roles, :through => :assignments
   using_access_control

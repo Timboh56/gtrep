@@ -1,0 +1,13 @@
+<% unless @question_group_questions.nil? %>
+  <% @question_group_questions.each { |f| %>
+    <%= f[0].text %>
+    <% if f[1].nil? %> 
+      <p> <%= text_area_tag :text, "", :size => '20x2' %> </p>
+	<% else %>
+	<% f[1].each { |ans| %>
+		<p> <%= ans.text %> <%= radio_button_tag "answer", ans.text, :name => ans.id %>  </p>
+	  <% } %>
+	<% end%>
+  <% } %> 
+	
+<% end %>

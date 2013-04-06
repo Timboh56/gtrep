@@ -38,19 +38,28 @@ class ResponsesController < ApplicationController
       # detect for ajax get request, render all questions within 
       # the requested question_group and answers for all multiple choice questions
       if request.xhr?
+        
+        # create question_group_questions instance object which stores
+        # for each question in question group an array containing the question object
+        # and the answers for that question if it is a multiple choice question.
         @question_group_questions = QuestionGroupQuestion.where(
           "question_group_id" => params[:question_group_id]
         ).collect { 
-          |d| Question.find(d.question_id) 
+          |d| 
+          question = Question.find(d.question_id)
+          [ question, 
+            question.question_type == 2 ? Answer.find_all_by_questions_id(d.question_id).to_a : nil
+          ]
         }
-        @question_group_questions_answers = @question_group_questions.collect { 
-          |d|  d.question_type == 0 ? [d.id, Answer.find_all_by_questions_id(d.id)] : nil
-        }
-        format.json { render json: { 
-          :question_group_questions => @question_group_questions, 
-          :answers => @question_group_questions_answers 
+
+        puts(" long long time " +  @question_group_questions.to_s)
+        
+
+        format.html {render :partial => "question_group_form", :layout => false, :locals => { 
+            :question_group_questions => @question_group_questions, 
         }
       }
+
       else
         # respond to normal request
         format.html # new.html.erb
