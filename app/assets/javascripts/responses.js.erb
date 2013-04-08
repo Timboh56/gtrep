@@ -4,18 +4,18 @@ $(function(){
 		// empty questions class
 		$('.questions').empty();
 		
-		var selected = $('#response_question_group_id option:selected').val();
-		if (selected != ""){
-			$.ajax({
-				type: 'GET',
-				dataType: 'json',
-				data: { question_group_id: '' + $('#response_question_group_id option:selected').val() },
-				url: '',
-				complete: function(data) {
-					alert( data.responseText);
-					$('.questions').append(data.responseText);
-				}
-			});
-		}
+	var selected = $('#response_question_group_id option:selected').val();
+		$.ajax(
+		  {
+		    type: 'GET',
+  	    dataType: 'json',
+            data: { question_group_id: $('#response_question_group_id option:selected').val() },
+            url: '',
+				  complete: function(data) {
+				    $('.questions').append(data.responseText);
+			    }
+			  }
+		  );
 	});
+	
 });

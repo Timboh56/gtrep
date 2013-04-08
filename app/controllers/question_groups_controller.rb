@@ -93,7 +93,7 @@ class QuestionGroupsController < ApplicationController
     respond_to do |format|
       if @question_group.update_attributes(params[:question_group])
         
-        # get all the question_group_questions submitted. if none were submitted, then initialize an empty array
+        # get all the question_group_questions for this question group. if none were submitted, then initialize an empty array
         new_question_group_questions = params[:question_group_questions].nil? ? Array.new : params[:question_group_questions][:question_ids]
 
         puts("______________________________ " + new_question_group_questions.to_s)

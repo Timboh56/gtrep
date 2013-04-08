@@ -1,0 +1,9 @@
+  <div class="field">
+    Choose an Question: <br />
+    <%= select("response", "question_id", @questions.collect { |d| [d.text,d.id] }) %>
+  </div>
+
+  <div class="field">
+    Choose an Answer: <br />
+    <%= select("response","answer_id", @answers.collect { |d| [d.text,d.id] }) %>
+  </div>

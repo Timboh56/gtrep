@@ -39,27 +39,29 @@ class ResponsesController < ApplicationController
       # the requested question_group and answers for all multiple choice questions
       if request.xhr?
         
-        # create question_group_questions instance object which stores
-        # for each question in question group an array containing the question object
-        # and the answers for that question if it is a multiple choice question.
-        @question_group_questions = QuestionGroupQuestion.where(
-          "question_group_id" => params[:question_group_id]
-        ).collect { 
-          |d| 
-          question = Question.find(d.question_id)
-          [ question, 
-            question.question_type == 2 ? Answer.find_all_by_questions_id(d.question_id).to_a : nil
-          ]
-        }
-
-        puts(" long long time " +  @question_group_questions.to_s)
+        # if the selected question group is empty (user selects no question group)
+        if !params[:question_group_id].empty?
         
+          # create question_group_questions instance object which stores
+          # for each question in question group an array containing the question object
+          # and the answers for that question if it is a multiple choice question.
+          @question_group_questions = QuestionGroupQuestion.where(
+            "question_group_id" => params[:question_group_id]
+          ).collect { 
+            |d| 
+            question = Question.find(d.question_id)
+            [ question, 
+              question.question_type == 2 ? Answer.find_all_by_questions_id(d.question_id).to_a : nil
+            ]
+          }
 
-        format.html {render :partial => "question_group_form", :layout => false, :locals => { 
+          format.html { render :partial => "question_group_form", :layout => false, :locals => { 
             :question_group_questions => @question_group_questions, 
-        }
-      }
-
+            }
+          }
+        else
+          format.html { render :partial => "question_answer", :layout => false, :locals => { :f => @response } }
+        end
       else
         # respond to normal request
         format.html # new.html.erb
@@ -81,11 +83,17 @@ class ResponsesController < ApplicationController
   # POST /responses
   # POST /responses.json
   def create
+    
+    puts("params")
+    params.each {|d| 
+      puts(d.to_s + " ")
+    }
+    puts("_______________________")
+    
     params[:response][:user_id] = current_user.id
     @response = Response.new(params[:response])
 
     respond_to do |format|
-      puts('anything')
       if @response.save
         format.html { redirect_to @response, notice: 'Response was successfully created.' }
         format.json { render json: @response, status: :created, location: @response }
