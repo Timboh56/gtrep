@@ -20,13 +20,9 @@
     <%= f.label :question_groups_type %><br />
     <%= select("question_group", :question_groups_type,{ "Survey" => "1", "Test" => "2", "Exam" => "3" }) %>
   </div>
-  <br />
-
+  
  <%= render "question_fields" %>
-		
-  <%= content_tag :button, :class => :add_question_button do %>
-     Add this question
-  <% end %>
+
   <hr />
   <div class="actions">
     <%= f.submit  %>

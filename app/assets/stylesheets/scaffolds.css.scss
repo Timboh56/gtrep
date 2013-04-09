@@ -35,11 +35,6 @@ h5 {
   line-height:.6em;  
 }
 
-h5:hover {
-  cursor: pointer;
-  text-decoration: line-through;
-}
-
 p, ol, ul, td, tr {
   font-family: "adelle", verdana, arial, helvetica, sans-serif;
   font-size: 13px;
@@ -53,7 +48,6 @@ pre {
   padding: 10px;
   font-size: 11px;
 }
-
 
 
 a {
@@ -132,12 +126,9 @@ div {
 }
 
 .nav {
-  border-radius: 10px;
-  border-color: black;
-  border-width: 10px;
   padding-left: 10%;
   padding-right: 10%;
-  width: 90%;
+  width: 100%;
 }
 
 .errors {

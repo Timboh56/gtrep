@@ -1,18 +1,21 @@
-    <div class="field" id="questions">
-  		<div class="select">
-    		"Add questions to your group: "<br />
-    		<select id="question_selector">
-				<%= @questions.each { |q|  %>
-					<option value="<%= q.id %>" > <%= q.text %> </option>
-				<% } %>
-		</select>
-  		</div>
-  
+  <div class="field" id="questions">
+    <div class="select">
+      Add questions to your group: <br />
+      <select id="question_selector">
+        <%= @questions.each { |q|  %>
+          <option value="<%= q.id %>" > <%= q.text %> </option>
+       <% } %>
+      </select>
+      <%= content_tag :button, :class => :add_question_button do %>
+        Add this question
+      <% end %>
+  </div>
+
   <div class="question_list">
     Questions added: <br /> 
 	  <% if !@orig_question_group_questions.nil?
-	       @orig_question_group_questions.each { |q| %> 
-		     <h5 id="<%= q.question_id %>"><%= Question.find(q.question_id).text %></h5>   
+	       @orig_question_group_questions.each { |q| %>			   
+		     <h5 id="<%= q.question_id %>"><%= Question.find(q.question_id).text %><a class='remove_<%= q.question_id %>' >[x]</a></h5>   
 	  <%   }
 	     end %>
   </div>
