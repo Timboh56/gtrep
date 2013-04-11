@@ -20,8 +20,6 @@ module ApplicationHelper
   
   def findByField(id, field)
     field = field.split('_id')[0].singularize.classify
-    puts('ok')
-    puts(field)
     if !id.nil?
       case field 
         when 'Question' 
