@@ -30,9 +30,6 @@ module ApplicationHelper
           QuestionGroup.find(id).name
       end
     end
-      
-      
-        #{field}.find(id).id rescue "N/A"
   end
   
 end
