@@ -1,5 +1,5 @@
 authorization do  
-  role :Admin do  
+  role :admin do  
     has_permission_on [:categories, :responses, :questions, :users, :answers, :roles, :assignments], :to => [:index, :show, :new, :create, :edit, :update, :destroy, :delete]  
   end  
     
@@ -15,6 +15,8 @@ authorization do
     has_permission_on :question_groups, :to => [:index, :show, :edit, :update,  :new, :create, :destroy, :delete]  
     has_permission_on :categories, :to => [:new, :create, :update, :edit, :destroy, :delete]
     has_permission_on :responses, :to => [:index, :show, :new, :create, :edit, :update]
+    has_permission_on :users, :to => [:edit, :update, :index, :show]
+    
   end
   
   role :student do  

@@ -1,7 +1,7 @@
 $(function(){
 	
 	$('#question_question_type').change(function() {
-		$('.answers_added').empty();
+		$('.add_answers').empty();
 		
 		var selected = $('#question_question_type option:selected').val();
 		
