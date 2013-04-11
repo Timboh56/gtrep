@@ -7,7 +7,11 @@
 
 <p>
   <b>Answer:</b>
-  <%= @response.answer.text %>
+  <%= if !@response.answer.nil? 
+        @response.answer.text 
+	  else
+		@response.text 
+	end  %>
 </p>
 
 <p>

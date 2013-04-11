@@ -27,6 +27,11 @@
     <%= f.label "Keep this question open (start allowing responses)? " %><br />
     <%= check_box("question","open", {}, checked_value="1", unchecked_value="0") %>
   </div>
+  
+  <div class="add_answers">
+	  <%= render :partial => "add_answers" %>
+  </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>
