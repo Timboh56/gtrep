@@ -34,7 +34,12 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @question }
+      
+      if request.xhr?
+        format.html {render :partial => "add_answers"}        
+      else
+        format.json { render json: @question }
+      end
     end
   end
 
