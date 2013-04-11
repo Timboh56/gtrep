@@ -83,20 +83,32 @@ class ResponsesController < ApplicationController
   # POST /responses
   # POST /responses.json
   def create
-    
-    puts("params")
-    params.each {|d| 
-      puts(d.to_s + " ")
-    }
-    puts("_______________________")
-    
-    params[:response][:user_id] = current_user.id
-    @response = Response.new(params[:response])
-
+        
     respond_to do |format|
-      if @response.save
-        format.html { redirect_to @response, notice: 'Response was successfully created.' }
-        format.json { render json: @response, status: :created, location: @response }
+      
+      if !params[:questions].nil? 
+        params[:questions].each {
+          |q| 
+          type = Question.find_by_id(q[0]).question_type
+          answer = (type == 2 ? Answer.find_by_id(q[1]).correct : nil)
+          Response.new( 
+            {
+              "question_id" => q[0],
+              "answer_id" => type == 2 ? q[1] : nil,
+              "text" => type == 1 ? q[1] : nil,
+              "user_id" => current_user.id,
+              "question_group_id" => params[:response][:question_group_id],
+              "correct" => answer
+            }
+          ).save
+        }
+        format.html { redirect_to '/responses', notice: 'Your responses were successfully saved.' }
+      else
+        @response = Response.new(params[:response])
+        if @response.save
+          format.html { redirect_to @response, notice: 'Response was successfully created.' }
+          format.json { render json: @response, status: :created, location: @response }
+        end
       end
     end
   end

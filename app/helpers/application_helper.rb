@@ -18,8 +18,23 @@ module ApplicationHelper
     object.delete_if { |key, value| key.to_s =~ /^#{regex}/m }
   end
   
-  def username(id)
-    User.find(id).username rescue "N/A"
+  def findByField(id, field)
+    field = field.split('_id')[0].singularize.classify
+    puts('ok')
+    puts(field)
+    if !id.nil?
+      case field 
+        when 'Question' 
+          Question.find(id).text
+        when 'Answer'
+          Answer.find(id).text
+        when 'QuestionGroup'
+          QuestionGroup.find(id).name
+      end
+    end
+      
+      
+        #{field}.find(id).id rescue "N/A"
   end
   
 end

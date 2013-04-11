@@ -9,7 +9,7 @@ $( function() {
         questions_detected[id] = $('#'+id).html();
     });
 
-    dyn_elements_interface.init(questions_detected);
+    dyn_elements_interface.init(questions_detected,'question');
 
     $('.add_question_button').on('click', function(e) {
       e.preventDefault();

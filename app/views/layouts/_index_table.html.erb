@@ -10,8 +10,8 @@
 	    <tr class="data">
 		  <% filterObject(o.attributes,['id','updated_at','created_at']).each do |field| %> 
 			<td> 
-				<% if field[0] == 'user_id' %>
-				  <%= username(field[1])%>
+				<% if field[0] =~ /.*_id/ %>
+				  <%= findByField(field[1],field[0])%>
 				<% else %>
 			      <%= field[1]%>
 				<% end %>
