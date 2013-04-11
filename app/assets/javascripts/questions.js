@@ -10,7 +10,7 @@ $(function(){
 				type: 'GET',
 				url: '',
 				complete: function(data) {
-				    $('.answers_added').append(data.responseText);
+				    $('.add_answers').append(data.responseText);
 				}
 			});
 		}

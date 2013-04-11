@@ -1,8 +1,9 @@
-<h5> Answers </h5>
-<table>
-	<tbody>
-<% @answers.each do |ans| %>
-	<tr> <td> <b> <%= ans.text %></b> </td></tr>
+Add answers: <%= select("answer", :answer_id, @answers.collect { |ans| ans.text}) %>
+
+<%= content_tag :button, :class => :add_answer_button do %>
+  Add this question
 <% end %>
-</tbody>
-</table>
+<div class="answers_added">
+	
+</div>
+
