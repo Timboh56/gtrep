@@ -4,7 +4,11 @@ class ResponsesController < ApplicationController
   # GET /responses
   # GET /responses.json
   def index
-    @responses = Response.where( user_id: current_user.id )
+    
+    # if the current user is a teacher or admin, display all responses submitted
+    # otherwise current user is a student, and may only view his/her own responses
+    current_user.top_role < 3 ? @responses = Response.all : @responses = Response.where( user_id: current_user.id )
+
     @question_groups = Question_group.all
     
 

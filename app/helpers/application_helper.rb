@@ -28,6 +28,8 @@ module ApplicationHelper
           Answer.find(id).text
         when 'QuestionGroup'
           QuestionGroup.find(id).name
+        when 'User'
+          User.find(id).username
       end
     end
   end

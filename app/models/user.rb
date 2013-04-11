@@ -12,4 +12,12 @@ class User < ActiveRecord::Base
       role.name.underscore.to_sym
     end
   end
+  
+  def top_role
+    top = 3
+    roles.map.collect{ |role|
+      role.id < top ? top = role.id : nil
+    }
+    top
+  end
 end
