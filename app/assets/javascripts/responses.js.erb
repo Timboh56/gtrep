@@ -18,4 +18,11 @@ $(function(){
 		  );
 	});
 	
+	$('.add_answer_button').click( function(e) {
+		e.preventDefault();
+		dyn_elements_interface.add();
+	});
+	
+	dyn_elements_interface.init(null,'answer');
+	
 });

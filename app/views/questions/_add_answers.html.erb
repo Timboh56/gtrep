@@ -1,4 +1,9 @@
-Add answers: <%= select("answer", :answer_id, @answers.collect { |ans| ans.text}) %>
+Add answers:
+<select id="answer_selector">
+  <%= @answers.each { |q|  %>
+    <option value="<%= q.id %>" > <%= q.text %> </option>
+ <% } %>
+</select>
 
 <%= content_tag :button, :class => :add_answer_button do %>
   Add this question
