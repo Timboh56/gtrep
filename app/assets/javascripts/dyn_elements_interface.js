@@ -7,6 +7,7 @@ dyn_elements_interface = (function () {
 			// initialize elements_added to keep track of questions
 			obj ? this.elements_added = obj : this.elements_added = {};
 			this.elem_name = elem_name
+			alert(this.elem_name)      
 			
 			// attach click event to initial questions (for edit page)
 			for(var id in this.elements_added) 
@@ -17,6 +18,7 @@ dyn_elements_interface = (function () {
 			// subject to change, in future this module
 			// should take in any selector and corresponding
 			// "add" buttons
+			alert(this.elem_name);
 			var id = $('#' + this.elem_name + '_selector option:selected').val(),
 			  elem_text = $('#' + this.elem_name + '_selector option:selected').text();
 			  

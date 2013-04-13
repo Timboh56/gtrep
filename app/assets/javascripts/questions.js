@@ -15,6 +15,14 @@ $(function(){
 			});
 		}
 	});
+	
+	$('.add_answer_button').click(function () {
+	  
+	
+	
+	});
+	
+	var answer_selected = $('#answer_selector option:selected').val();
 
 
 

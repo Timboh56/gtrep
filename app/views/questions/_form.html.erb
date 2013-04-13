@@ -1,3 +1,8 @@
+<%= content_for(:js_page) { javascript_include_tag('questions') } %>
+<%= content_for(:js_page) { javascript_include_tag('dyn_elements_interface') } %>
+
+
+
 <%= form_for(@question) do |f| %>
   <% if @question.errors.any? %>
     <div id="error_explanation">

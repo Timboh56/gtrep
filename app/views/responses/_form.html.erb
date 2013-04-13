@@ -1,3 +1,5 @@
+<%= content_for(:js_page) { javascript_include_tag('responses') } %>
+
 <%= form_for(@response) do |f| %>
   <% if @response.errors.any? %>
     <div id="error_explanation">

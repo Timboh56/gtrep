@@ -4,6 +4,8 @@
   <title>GTRep: Simplify your workspace</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <%= yield :js_page %>
+  <%= javascript_include_tag('dyn_elements_interface') %>
     <script type="text/javascript" src="//use.typekit.net/vfg0zyr.js"></script>
   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
   <%= csrf_meta_tags %>
