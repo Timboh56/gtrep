@@ -29,15 +29,14 @@ class QuestionsController < ApplicationController
   # GET /questions/new.json
   def new
     @question = Question.new
-    @categories = Category.all
-    @answers = Answer.all
-
+    
+    get_vars
+    
     respond_to do |format|
       format.html # new.html.erb
-      
       if request.xhr?
         format.html {render :partial => "add_answers"}        
-      else
+      else        
         format.json { render json: @question }
       end
     end
@@ -52,16 +51,18 @@ class QuestionsController < ApplicationController
   # POST /questions
   # POST /questions.json
   def create
+    
     expire_action :action => :index
     @question = Question.new(params[:question])
-
+    get_vars
+    
     respond_to do |format|
       if @question.save
         format.html { redirect_to @question, notice: 'Question was successfully created.' }
         format.json { render json: @question, status: :created, location: @question }
       else
         format.html { render action: "new" }
-        format.json { render json: @question.errors, status: :unprocessable_entity }
+        format.json { render json: @question.errors, status: :unprocessable_entity }              
       end
     end
   end
@@ -69,8 +70,8 @@ class QuestionsController < ApplicationController
   # PUT /questions/1
   # PUT /questions/1.json
   def update
+    get_vars
     @question = Question.find(params[:id])
-
     respond_to do |format|
       if @question.update_attributes(params[:question])
         format.html { redirect_to @question, notice: 'Question was successfully updated.' }
@@ -92,5 +93,12 @@ class QuestionsController < ApplicationController
       format.html { redirect_to questions_url }
       format.json { head :no_content }
     end
+  end
+  
+  private
+  
+  def get_vars
+    @categories = Category.all
+    @answers = Answer.all
   end
 end

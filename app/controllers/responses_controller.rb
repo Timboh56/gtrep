@@ -9,7 +9,7 @@ class ResponsesController < ApplicationController
     # otherwise current user is a student, and may only view his/her own responses
     current_user.top_role < 3 ? @responses = Response.all : @responses = Response.where( user_id: current_user.id )
 
-    @question_groups = Question_group.all
+    @question_groups = QuestionGroup.all
     
 
     respond_to do |format|
