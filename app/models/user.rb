@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   end
   
   def top_role
+    
+    # CHANGE SOON
     top = 3
     roles.map.collect{ |role|
       role.id < top ? top = role.id : nil

@@ -6,6 +6,7 @@ class Question < ActiveRecord::Base
   has_many :question_group_questions, :dependent => :destroy
   has_many :responses, :dependent => :destroy
   validates :text, :presence => true, :length => { :maximum => 200 }
+  scope :open_questions, where(:open => true)
   using_access_control
 
 end
