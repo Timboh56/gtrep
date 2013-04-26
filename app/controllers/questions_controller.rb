@@ -6,7 +6,7 @@ class QuestionsController < ApplicationController
   
   
   def index
-    @questions = current_user.top_role < 3 ? Question.all : Question.open_questions
+    @questions = current_user.top_role == 1 ? Question.all : Question.open_questions
 
     respond_to do |format|
       format.html # index.html.erb

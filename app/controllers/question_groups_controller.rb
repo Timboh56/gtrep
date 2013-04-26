@@ -2,7 +2,7 @@ class QuestionGroupsController < ApplicationController
   # GET /question_groups
   # GET /question_groups.json
   def index
-    @question_groups = QuestionGroup.all
+    @question_groups = current_user.top_role == 3 ? QuestionGroup.open_question_groups : QuestionGroup.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,7 +14,7 @@ class QuestionGroupsController < ApplicationController
   # GET /question_groups/1.json
   def show
     @question_group = QuestionGroup.find(params[:id])
-    @question_group_questions = QuestionGroupQuestion.find_all_by_question_group_id(params[:id]);
+    @question_group_questions = QuestionGroupQuestion.find_all_by_question_group_id(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -53,9 +53,12 @@ class QuestionGroupsController < ApplicationController
   # POST /question_groups
   # POST /question_groups.json
   def create
-    params[:question_group][:user_id]= current_user.id
-
+    # Get all questions so user can add questions
+    # CHANGE SO THAT THIS ONLY APPEARS IF VALIDATION FAILS
+    @questions = Question.all 
+    
     @question_group = QuestionGroup.new(params[:question_group])
+    @question_group.user = current_user
 
     respond_to do |format|
       if @question_group.save

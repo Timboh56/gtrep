@@ -26,6 +26,12 @@
  <%= render "question_fields" %>
 
   <hr />
+  
+  <div class="field">
+    <%= f.label :open %><br />
+    <%= check_box_tag "question_group[open]" %>
+  </div>
+  
   <div class="actions">
     <%= f.submit  %>
   </div>

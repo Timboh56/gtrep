@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130412034647) do
+ActiveRecord::Schema.define(:version => 20130426015806) do
 
   create_table "answers", :force => true do |t|
     t.string   "text"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(:version => 20130412034647) do
     t.integer  "question_groups_type"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
+    t.boolean  "open"
   end
 
   add_index "question_groups", ["name"], :name => "index_question_groups_on_name"
