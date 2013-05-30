@@ -1,6 +1,6 @@
 <table>
   <tr>
-	  <% filterObject(fields,['id','updated_at','created_at']).each do |f| %>
+	  <% filterObject(fields,['id','updated_at','created_at']).each do |f| %>	  
 	  	<th> <center> <%= normalizeField(f).capitalize %> </center> </th>
 	  <% end %>
 	  <th> Actions </th>
@@ -23,7 +23,6 @@
 			         link_to "Show", o, :action => :show
 			       end %>
 				   
-				   <% puts klass.to_s %>
 			   <%= if permitted_to? :edit, o 
 		              link_to "Edit", edit_polymorphic_path(o)
 	               end	

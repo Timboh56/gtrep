@@ -1,5 +1,7 @@
 <h1>Listing question_groups</h1>
 
+<%= paginate @question_groups %>
+
 <%= index_table(@question_groups,QuestionGroup) %>
 
 <%= link_to 'New Question Group', new_question_group_path %>

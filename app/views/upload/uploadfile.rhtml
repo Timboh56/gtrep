@@ -1,0 +1,9 @@
+<h1> Image Upload </h1>
+
+<p id="notice"><%= notice %></p>
+
+
+<%= form_tag 'uploadFile', :multipart => true do %>
+  <%= file_field_tag 'uploadFile', :accept => 'image/png,image/gif,image/jpeg' %>
+  <%= submit_tag "Upload" %>
+<% end %>

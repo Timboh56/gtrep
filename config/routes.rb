@@ -17,6 +17,11 @@ Gtrep::Application.routes.draw do
   
   resources :password_resets
   
+  resources :snippets
+  
+  resources :upload
+  match 'uploadFile' => 'upload#uploadFile'
+  
   resources :users, :user_sessions
   match 'login' => 'user_sessions#new', :as => :login
   match 'logout' => 'user_sessions#destroy', :as => :logout

@@ -1,0 +1,5 @@
+10_s_scheduler:
+  every: 10s
+  class: 
+  args:
+  description: Runs perform method in SnippetHighlighter worker class

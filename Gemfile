@@ -12,7 +12,13 @@ gem 'declarative_authorization'
 gem 'json'
 gem 'cocoon'
 gem 'rb-fsevent', '~> 0.9'
-
+gem 'sphinx'
+gem 'kaminari'
+gem 'redis'
+gem 'resque'
+gem 'resque-scheduler'
+gem 'ruby_parser'
+gem 'sidekiq'
 
 # Gems used only for assets and not required
 # in production environments by default.

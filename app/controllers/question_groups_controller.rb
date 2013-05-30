@@ -2,7 +2,7 @@ class QuestionGroupsController < ApplicationController
   # GET /question_groups
   # GET /question_groups.json
   def index
-    @question_groups = current_user.top_role == 3 ? QuestionGroup.open_question_groups : QuestionGroup.all
+    @question_groups = current_user.top_role == 3 ? QuestionGroup.open_question_groups.order("name").page(3) : QuestionGroup.order("name").page(3)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -59,11 +59,12 @@ class QuestionGroupsController < ApplicationController
     
     @question_group = QuestionGroup.new(params[:question_group])
     @question_group.user = current_user
-
+    puts(params.to_s)
     respond_to do |format|
       if @question_group.save
         
         # save all dynamically added questions from form
+        # TO-DO: ADD ERROR HANDLING IF NO QUESTIONS WERE SUBMITTED THROUGH VALIDATION
         params[:question_group_questions][:question_ids].each {
           |q| @question_group_questions = QuestionGroupQuestion.new(
             {
