@@ -4,8 +4,7 @@ class AnswersController < ApplicationController
   # GET /answers
   # GET /answers.json
   def index
-    @answers = Answer.all
-    @questions = Question.all
+    @presenter = Answers::AnswersPresenter.new
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,9 +15,8 @@ class AnswersController < ApplicationController
   # GET /answers/1
   # GET /answers/1.json
   def show
-    @answer = Answer.find(params[:id])
-    @question = Question.find(@answer.questions_id)
-
+    @presenter = Answers::AnswersPresenter.new(params[:id])
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @answer }
