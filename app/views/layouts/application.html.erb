@@ -11,38 +11,34 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-    <div class="centering">
+	<header>
+		<h4>GT Rep</h4>
+		<h3>Simplify your workspace! </h3>
 		
-		<div class="logo">
-			<h4>GT Rep</h4>
-			<h3>Simplify your workspace! </h3>
-		</div>
+	    <% if current_user %>
+	    	Logged in as <a href="users"><%= current_user.username %></a> |
+    		<%= link_to "Edit Profile", edit_user_path(current_user.id)%> |
+   	 		<%= link_to "Logout", :logout %> 
+		<% else %>
+    		<%= link_to "Register", new_user_path %> | 
+    		<%= link_to "Login", :login %>
+    	<% end %>
+	</header>
+	
+	<p>
+	
+	<% if current_user %>	
+	    <nav>
+			<%= nav_bar %>
+			</p>
+		</nav>
+	<% end %>
+    
+	<div class="container">
+
 	<p id="notice"> <center> <%= notice %> </center></p>
 	<div class="errors">
  		<%= flash[:error] %>
-	</div>
-    <div class="nav">
-		<center>
-			
-        <% if current_user %>
-		<p>
-		    Logged in as <a href="users"><%= current_user.username %></a> |
-        	<%= link_to "Edit Profile", edit_user_path(current_user.id)%> |
-       	 	<%= link_to "Logout", :logout %> 
-		</p>
-		<hr>
-		<p>
-	 		<%= link_to "Question Groups", question_groups_path %> | 
-	 		<%= link_to "My Categories", categories_path %> | 
-			<%= link_to "My Responses", responses_path %> |
-			<%= link_to "Answer Bank", answers_path %> |	
-			<%= link_to "Question Bank", questions_path %>
-		</p>
-        <% else %>
-        	<%= link_to "Register", new_user_path%> | 
-        	<%= link_to "Login", :login %>
-        <% end %>
-		</center>
 	</div>
 	
 	<div class="content">

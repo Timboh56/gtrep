@@ -14,12 +14,6 @@ class User < ActiveRecord::Base
   end
   
   def top_role
-    
-    # CHANGE SOON
-    top = 3
-    roles.map.collect{ |role|
-      role.id < top ? top = role.id : nil
-    }
-    top
+    max = roles.max_by(&:id)
   end
 end

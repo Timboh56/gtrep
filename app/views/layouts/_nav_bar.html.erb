@@ -1,0 +1,8 @@
+<% puts "links" + links.to_s %>
+<ul>
+<% links.each_with_index do |(k,v), value| %>
+	<li>
+		<%= link_to k, send("#{v}_path") %>
+	</li>
+<% end %>
+</ul>

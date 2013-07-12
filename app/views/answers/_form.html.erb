@@ -14,7 +14,7 @@
   <% end %>
   <div class="field">
     <%= f.label "Choose a question for your answer: " %><br />
-    <%= select("answer","questions_id",@questions.collect { |d| [d.text,d.id] } ) %>
+    <%= select("answer","questions_id",@presenter.all_questions.collect { |d| [d.text,d.id] } ) %>
   </div>
   <div class="field">
     <%= f.label "Enter answer text:" %><br />

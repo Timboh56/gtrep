@@ -26,8 +26,7 @@ class AnswersController < ApplicationController
   # GET /answers/new
   # GET /answers/new.json
   def new
-    @answer = Answer.new
-    @questions = Question.all
+    @presenter = Answers::AnswersPresenter.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -37,8 +36,7 @@ class AnswersController < ApplicationController
 
   # GET /answers/1/edit
   def edit
-    @answer = Answer.find(params[:id])
-    @questions = Question.all
+    @presenter = Answers::AnswersPresenter.new(params[:id])
   end
 
   # POST /answers

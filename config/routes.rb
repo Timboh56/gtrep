@@ -20,7 +20,7 @@ Gtrep::Application.routes.draw do
   resources :snippets
   
   resources :upload
-  match 'uploadFile' => 'upload#uploadFile'
+  match 'upload/uploadFile' => 'upload#uploadFile'
   
   resources :users, :user_sessions
   match 'login' => 'user_sessions#new', :as => :login
