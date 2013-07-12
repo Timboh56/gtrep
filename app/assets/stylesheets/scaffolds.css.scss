@@ -4,13 +4,16 @@ body {
   font-family: "adelle", arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
+  width: 90%;
+
+  float: left;
 }
 
 h1 {
   position: relative;
   font-family: "aw-conqueror-carved-two", "Arial";
   font-size: 3.5em;
-  left: -25px;
+  left: -3em;
   width: 600px;
   line-height: .7em;
   text-align: inherit;
@@ -117,7 +120,6 @@ section {
 
 header, .container {
   margin:0px auto;
-  line-height:1px;
   width: 50%;
   text-align:center;
 }
@@ -129,8 +131,8 @@ nav {
   font-size: 1em;
   text-align: center;
   ul,li {
-  	line-height: 1.2em;
-  
+  	font-color: white;
+  	line-height: 1.5em;
     list-style-type: none;
 	font-size: 1.2em;
   }

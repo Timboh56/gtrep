@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GTRep: Simplify your workspace</title>
+  <%= stylesheet_link_tag "mobile", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= yield :js_page %>
+  <%= javascript_include_tag('dyn_elements_interface') %>
+    <script type="text/javascript" src="//use.typekit.net/vfg0zyr.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<header>
+		<h4>GT Rep</h4>
+		<h3>Simplify your workspace! </h3>
+		
+	    <% if current_user %>
+	    	Logged in as <a href="users"><%= current_user.username %></a> |
+    		<%= link_to "Edit Profile", edit_user_path(current_user.id)%> |
+   	 		<%= link_to "Logout", :logout %> 
+		<% else %>
+    		<%= link_to "Register", new_user_path %> | 
+    		<%= link_to "Login", :login %>
+    	<% end %>
+	</header>
+	
+	<p>
+	
+	<% if current_user %>	
+	    <nav>
+			<%= nav_bar %>
+			</p>
+		</nav>
+	<% end %>
+    
+	<div class="container">
+
+	<p id="notice"> <center> <%= notice %> </center></p>
+	<div class="errors">
+ 		<%= flash[:error] %>
+	</div>
+	
+	<div class="content">
+			<%= yield %>
+	</div>
+ 
+	</div>
+ 
+</body>
+</html>

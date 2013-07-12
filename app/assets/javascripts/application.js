@@ -18,12 +18,22 @@
 	$(function(){
 		function animateContent() {	
 			$('h1').animate({
-				left: '0px',
+				left: '-1.5em',
 			},1000);
 			$('.content').animate({
 				opacity: 1,
 			},1000);
 		}
+		
+		function navbar() {
+			var colors = ["blue","yellow","red","purple","orange"];
+			var i = 0;
+			$('nav li').each(function(element) {
+				$(this).css("background-color",colors[i]);
+				i++;
+			});	
+		}
+		
 		animateContent();
 	});
 })(jQuery)

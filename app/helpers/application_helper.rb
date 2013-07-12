@@ -1,18 +1,21 @@
 module ApplicationHelper
   
   def nav_bar
+    links = { 
+      "Question Groups" => "question_groups", 
+      "My Categories" => "categories",
+      "My Responses" => "responses",
+      "Answer Bank" => "answers",
+      "Question Bank" => "questions",
+    }
     if current_user.top_role.id < 3
-      render "layouts/nav_bar", {
-        :links => { 
-                    "Question Groups" => "question_groups", 
-                    "My Categories" => "categories",
-                    "My Responses" => "responses",
-                    "Answer Bank" => "answers",
-                    "Question Bank" => "questions",
-                    "Users" => "users"
-                  }
-      }
+      links["Users"] = "users"
     end
+          
+    render "layouts/nav_bar", {
+      :links => links
+    }
+    
   end
   
   def index_table(object, klass) 

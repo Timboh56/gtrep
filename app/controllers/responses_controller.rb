@@ -7,7 +7,7 @@ class ResponsesController < ApplicationController
     
     # if the current user is a teacher or admin, display all responses submitted
     # otherwise current user is a student, and may only view his/her own responses
-    @responses = current_user.top_role < 3 ? Response.all : Response.user_responses(current_user.id)
+    @responses = current_user.top_role.id < 3 ? Response.all : Response.user_responses(current_user.id)
 
     @question_groups = QuestionGroup.all
 
