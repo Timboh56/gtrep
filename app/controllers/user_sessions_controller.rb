@@ -1,4 +1,5 @@
 class UserSessionsController < ApplicationController  
+  respond_to :xml, :html, :json
  
   # GET /user_sessions/new
   # GET /user_sessions/new.xml
@@ -12,7 +13,7 @@ class UserSessionsController < ApplicationController
     
     @user_session = UserSession.new(params[:user_session])
     
-    respond_to do |format|
+    respond_with(@user_session) do |format|
       if @user_session.save
         format.html { redirect_to(:users, :notice => 'Login Successful') }
         format.xml  { render :xml => @user_session, :status => :created, :location => @user_session }
@@ -21,6 +22,7 @@ class UserSessionsController < ApplicationController
         format.xml  { render :xml => @user_session.errors, :status => :unprocessable_entity }
       end
     end
+
   end
  
   # DELETE /user_sessions/1

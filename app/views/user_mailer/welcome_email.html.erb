@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+
+<html>
+
+
+<body>
+	
+	<h1> Welcome to GTRep, <%= @user.username %> </h1>
+
+Please click on this link to validate your account
+
+<%= link_to "Acivate account", { :controller => "users", :user_id => @user.id.to_s, :action => "activate", :salt => @user.salt } %>
+
+</body>
+
+</html>

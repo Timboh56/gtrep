@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   filter_access_to :all
   caches_action :index
+  respond_to :html, :xml, :json
   
   # GET /users
   # GET /users.json
@@ -17,11 +18,8 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @user }
-    end
+    
+    respond_with(@user)
   end
 
   # GET /users/new
@@ -30,10 +28,7 @@ class UsersController < ApplicationController
     @user = User.new
     @roles = Role.all
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @user }
-    end
+    respond_with(@user)
   end
 
   # GET /users/1/edit
@@ -42,14 +37,21 @@ class UsersController < ApplicationController
     @roles = Role.all
     
   end
+  
+  def activate(salt)
+    
+  end
 
   # POST /users
   # POST /users.json
   def create
     @user = User.new(params[:user])
+    @user.activated = false
+    @user.salt = (0..8).map{(65 + rand(24)).chr}.join()
  
-    respond_to do |format|
+   respond_with(@user) do |format|
       if @user.save
+        UserMailer.welcome_email(@user).deliver!
         format.html { redirect_to(:users, :notice => 'Registration successfull.') }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else
