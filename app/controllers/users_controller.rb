@@ -52,7 +52,7 @@ class UsersController < ApplicationController
    respond_with(@user) do |format|
       if @user.save
         UserMailer.welcome_email(@user).deliver!
-        format.html { redirect_to(:users, :notice => 'Registration successfull.') }
+        format.html { render {:action => "activate", :notice => 'Please check your email to activate your account' }}
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else
         format.html { render :action => "new" }

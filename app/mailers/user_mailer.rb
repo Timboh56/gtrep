@@ -5,7 +5,6 @@ class UserMailer < ActionMailer::Base
     @user = user
     
     # generate salt
-    @salt = (0..8).map{(65 + rand(24)).chr}.join()
     mail(to: @user.email, subject: "Welcome to GTREP")
   end
   
