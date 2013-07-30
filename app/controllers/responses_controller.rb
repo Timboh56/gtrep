@@ -1,5 +1,7 @@
 class ResponsesController < ApplicationController
   filter_resource_access
+  respond_to :html, :xml, :json
+  
   
   # GET /responses
   # GET /responses.json
@@ -11,10 +13,7 @@ class ResponsesController < ApplicationController
 
     @question_groups = QuestionGroup.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @responses }
-    end
+    respond_with(@responses)
   end
 
   # GET /responses/1
@@ -22,10 +21,7 @@ class ResponsesController < ApplicationController
   def show
     @response = Response.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @response }
-    end
+    respond_with(@response)
   end
 
   # GET /responses/new

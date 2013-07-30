@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :username, :email, :password, :password_confirmation, :role_ids
+  attr_accessible :username, :email, :password, :password_confirmation, :role_ids, :activated
   acts_as_authentic
   has_many :responses, :dependent => :destroy
   has_many :question_groups, :dependent => :destroy

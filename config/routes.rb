@@ -22,9 +22,8 @@ Gtrep::Application.routes.draw do
   resources :upload
   match 'upload/uploadFile' => 'upload#uploadFile'
   
-  resources :users do
-    match 'activate' => 'users#activate'
-  end
+  resources :users
+  match 'activate' => 'users#activate'
   
   resources :user_sessions
   match 'login' => 'user_sessions#new', :as => :login

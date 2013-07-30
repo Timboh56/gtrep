@@ -37,10 +37,6 @@ class UsersController < ApplicationController
     @roles = Role.all
     
   end
-  
-  def activate(salt)
-    
-  end
 
   # POST /users
   # POST /users.json
@@ -48,11 +44,15 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     @user.activated = false
     @user.salt = (0..8).map{(65 + rand(24)).chr}.join()
+    
+    if params[:user][:role_ids].nil?
+      @user.role_ids = 3
+    end
  
    respond_with(@user) do |format|
       if @user.save
         UserMailer.welcome_email(@user).deliver!
-        format.html { render {:action => "activate", :notice => 'Please check your email to activate your account' }}
+        format.html { render :action => "activate", :notice => "Please check your email to activate your account" }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else
         format.html { render :action => "new" }

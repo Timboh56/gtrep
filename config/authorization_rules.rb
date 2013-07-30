@@ -1,12 +1,12 @@
 authorization do  
   role :admin do  
-    has_permission_on [:categories, :responses, :questions, :users, :answers, :roles, :assignments], :to => [:index, :show, :new, :create, :edit, :update, :destroy, :delete]  
+    has_permission_on [:categories, :responses, :questions, :users, :answers, :roles, :assignments], :to => [:index, :show, :new, :create, :edit, :update, :destroy, :delete, :activate]  
   end  
     
   role :guest do  
     has_permission_on :users, :to => [:new, :create, :update, :index, :activate]  
     has_permission_on :assignments, :to => [:new, :create, :edit, :update]
-    has_permission_on :user_sessions, :to => [:new, :update]
+    has_permission_on :user_sessions, :to => [:new, :update]    
   end  
   
   role :teacher do
