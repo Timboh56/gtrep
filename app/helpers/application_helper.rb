@@ -26,6 +26,15 @@ module ApplicationHelper
     }
   end
   
+  def nice_form_for(object, options = {})
+    
+    
+  end
+  
+  def flash_and_form_errors(object = nil)
+    render :partial => "layouts/object_errors", :locals => { :object => object }
+  end
+  
   # normalizeField will take a field as a string and return it without "_id". e.g. user_id becomes user
   def normalizeField(string)
     string.gsub /_id|_/, " "

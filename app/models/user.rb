@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   acts_as_authentic
   has_many :responses, :dependent => :destroy
   has_many :question_groups, :dependent => :destroy
-  has_many :assignments
+  has_many :assignments, :dependent => :destroy
   has_many :roles, :through => :assignments
   using_access_control
   
@@ -14,6 +14,6 @@ class User < ActiveRecord::Base
   end
   
   def top_role
-    max = roles.max_by(&:id)
+    max = roles.min_by(&:id)
   end
 end

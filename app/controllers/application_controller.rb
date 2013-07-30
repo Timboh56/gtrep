@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   
   before_filter :set_current_user
-  before_filter :check_activated
+  before_filter :check_activated, :except => [:logout]
   
   layout :detect_browser
 
@@ -14,19 +14,25 @@ class ApplicationController < ActionController::Base
   MOBILE_BROWSERS = ["android", "ipod", "opera mini", "blackberry", "palm","hiptop","avantgo","plucker", "xiino","blazer","elaine", "windows ce; ppc;", "windows ce; smartphone;","windows ce; iemobile", "up.browser","up.link","mmp","symbian","smartphone", "midp","wap","vodafone","o2","pocket","kindle", "mobile","pda","psp","treo"]
   
   def check_activated
+    puts "checking activation"
     if current_user && current_user.activated == false
+      puts "activation"
       activate(params[:salt])
     end
   end
   
   # PUT /users/1/activate
   def activate(salt = nil)
+    puts "activation"
+    
     if salt
       @user = User.find_by_salt(salt)
       if @user
         @user.update_attributes(:activated => true)      
       end
     end
+    
+    render "users/activate"
   end
   
   def detect_browser

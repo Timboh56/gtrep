@@ -13,7 +13,5 @@
 	<br />
 <% end %>
  
-<% if permitted_to? :create, :users 
-     link_to 'New User', new_user_path 
-   end %>
+   <%= index_table(@users, User) %>
 </center>

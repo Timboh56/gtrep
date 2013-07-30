@@ -1,4 +1,7 @@
-<%= flash[:error] %>
+<%= nice_form_for(@user) do |f| %>
+
+<% end %>
+
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
@@ -27,7 +30,7 @@
   <div class="field">
       <%= f.label :password_confirmation %><br />
       <%= f.password_field :password_confirmation %>
-    </div>
+   </div>
 	
 	<%= f.label :roles %> <br />
 	<% for role in Role.all %> 

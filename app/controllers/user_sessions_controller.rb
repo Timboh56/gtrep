@@ -1,5 +1,6 @@
 class UserSessionsController < ApplicationController  
   respond_to :xml, :html, :json
+  skip_before_filter :check_activated, :only => [:destroy]
  
   # GET /user_sessions/new
   # GET /user_sessions/new.xml
