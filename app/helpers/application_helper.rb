@@ -18,7 +18,10 @@ module ApplicationHelper
     
   end
   
-  def index_table(object, klass) 
+  def index_table(object, klass)
+    
+    # attributes you don't want displayed in index table
+      @filter_attr = ['id','updated_at','created_at','password_salt','persistence_token','login_count','login_ip','last_request_at','crypted_password']
     render "layouts/index_table", {
       :object => object,
       :klass => klass,
@@ -43,21 +46,26 @@ module ApplicationHelper
   # filterObject removes input fields (an array of strings to be matched) from object
   def filterObject(object, fields)
     regex = fields.join("|")
-    object.delete_if { |key, value| key.to_s =~ /^#{regex}/m }
+    object.delete_if { |key, value| key.to_s =~ /^#{regex}/ }
   end
   
   def findByField(id, field)
     field = field.split('_id')[0].singularize.classify
-    if !id.nil?
-      case field 
-        when 'Question' 
-          Question.find(id).text
-        when 'Answer'
-          Answer.find(id).text
-        when 'QuestionGroup'
-          QuestionGroup.find(id).name
-        when 'User'
-          User.find(id).username
+    if id
+      begin
+        obj = "#{field}".constantize.find(id)
+          case field 
+            when 'Question' 
+              obj.text
+            when 'Answer'
+              obj.text
+            when 'QuestionGroup'
+             obj.name
+            when 'User'
+              obj.username
+          end
+      rescue
+        "#{field} was deleted."
       end
     end
   end

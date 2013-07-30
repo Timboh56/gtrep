@@ -2,7 +2,7 @@ class QuestionGroupsController < ApplicationController
   # GET /question_groups
   # GET /question_groups.json
   def index
-    @question_groups = current_user.top_role == 3 ? QuestionGroup.open_question_groups.order("name").page(3) : QuestionGroup.order("name").page(3)
+    @question_groups = current_user.top_role == 3 ? QuestionGroup.open_question_groups.order("name") : QuestionGroup.order("name")
 
     respond_to do |format|
       format.html # index.html.erb

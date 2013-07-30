@@ -14,7 +14,6 @@ class ApplicationController < ActionController::Base
   MOBILE_BROWSERS = ["android", "ipod", "opera mini", "blackberry", "palm","hiptop","avantgo","plucker", "xiino","blazer","elaine", "windows ce; ppc;", "windows ce; smartphone;","windows ce; iemobile", "up.browser","up.link","mmp","symbian","smartphone", "midp","wap","vodafone","o2","pocket","kindle", "mobile","pda","psp","treo"]
   
   def check_activated
-    puts "checking activation"
     if current_user && current_user.activated == false
       puts "activation"
       activate(params[:salt])
@@ -22,9 +21,7 @@ class ApplicationController < ActionController::Base
   end
   
   # PUT /users/1/activate
-  def activate(salt = nil)
-    puts "activation"
-    
+  def activate(salt = nil)    
     if salt
       @user = User.find_by_salt(salt)
       if @user
@@ -32,6 +29,7 @@ class ApplicationController < ActionController::Base
       end
     end
     
+    # render activation page
     render "users/activate"
   end
   

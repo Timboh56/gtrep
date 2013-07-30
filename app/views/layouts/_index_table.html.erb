@@ -1,6 +1,6 @@
 <table>
   <tr>
-	  <% filterObject(fields,['id','updated_at','created_at']).each do |f| %>	  
+	  <% filterObject(fields, @filter_attr).each do |f| %>	  
 	  	<th> <center> <%= normalizeField(f).capitalize %> </center> </th>
 	  <% end %>
 	  <th> Actions </th>
@@ -8,7 +8,7 @@
   <% unless object.nil? %>
     <% object.each do |o| %>
 	    <tr class="data">
-		  <% filterObject(o.attributes,['id','updated_at','created_at']).each do |field| %> 
+		  <% filterObject(o.attributes,@filter_attr).each do |field| %> 
 			<td> 
 				<% if field[0] =~ /.*_id/ %>
 				  <%= findByField(field[1],field[0])%>
